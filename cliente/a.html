@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="./global.css">
+    <link rel="stylesheet" href="./ac.css">
+
+    <link rel="icon" href="./svg_logo.svg" type="image/svg">
+
+
+    <!-- <meta name="google-signin-client_id" content="810359309483-574f3stbrv32bea3832ods43lv32m7c0.apps.googleusercontent.com"> -->
+    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
+
+</head>
+<body>
+
+    <div style="position: relative; overflow: hidden; height: 100dvh; width: 100vw;  background-color: white;">
+
+        <div style="animation: 0.3s slideToTop; height: 100dvh; width: 100vw;" class="f f-cntr">
+            
+
+
+
+    <div style="position: relative;  height: 100dvh; width: 100%;" class="f f-col f-cntr">
+
+
+
+  
+    <!-- <div style="width: 280px;">
+        <h1 class="fw-7 fsz-20" style="color:var(--main-color);">Sign-In</h1>
+        <p class="fsz-11 fw-5" style="color: var(--main-color);">Please, Sign in to continue.</p>
+    </div> -->
+    <!-- <div style="width: 280px;">
+        <h1 class="fw-7 fsz-20" style="color:#868686;">Sign-In</h1>
+        <p class="fsz-11 fw-4" style="color: #b0b0b0;">Please, Sign in to continue.</p>
+    </div> -->
+
+
+
+    
+    <form id="login-form" style="width: 100%; height: fit-content; align-items: center; gap: 16px; padding: 0 20px 0 20px;" class="f f-col">
+
+
+        <img src="./flag.png" style="width: 200px; margin-bottom: 16px;" alt="">
+
+
+
+    <input id="email-input" placeholder="email" type="email" style="padding-left: 15px; border:none; background: #F2F2F2; width: 95%;  height: 55px; color: rgb(100, 100, 100);"  class="fw-6">
+
+
+    <input id="password-input" placeholder="password" type="password" style="padding-left: 15px; border:none; background: #F2F2F2; width: 95%;  height: 55px; color: rgb(100, 100, 100);"  class="fw-6">
+
+
+    <div  class="f f-cntr" style="display: none; gap: 6px; color: var(--sec-color); width: 250px; margin: 12px 0 12px 0;">
+        <p id="error-message" class="fw-5 fsz-09" style="color: var(--sec-color); text-align: center;"></p>
+      </div>
+    
+
+<button type="submit"  id="sign-in-button" style="color: white; background-color: var(--main-color); height: 55px; width: 95%;" class="f f-cntr fw-7 fsz-10">LOGIN</button>
+
+<div onclick="googleAuth()" style="width: 95%; height: 55px; padding: 5px; background-color: white;  border: 1px solid rgb(211, 211, 211);" class="f f-cntr">
+    <div id="custom-google-button"  style="width: fit-content; height: fit-content;">
+        <span class="google-icon"></span>
+    </div>
+</div>
+
+<!-- <p style="color: var(--main-color);" class="fsz-09">Forgot Password?</p> -->
+
+<div style="margin-top: 16px;">
+    <p class="fsz-08" style="color: #736F7C;">Don't have an account? <a href="/c.html" style="text-decoration: none; color: var(--main-color);" class="fw-6">Create Account</a></p>
+</div>
+
+</form>
+
+
+</div>
+</div>
+        
+</div>
+ 
+
+
+<script src="https://accounts.google.com/gsi/client" defer async></script>
+<script async defer>
+
+
+
+    async function signIn(e){
+        if (e) e.preventDefault()
+        const btn = document.getElementById('sign-in-button')
+        btn.disabled = true
+        let prev_txt = btn.innerText
+        btn.innerText = null
+        const spinner = document.createElement('div')
+        spinner.className = 'spinner'
+        btn.append(spinner)
+
+        const emailInput = document.getElementById('email-input')
+        const passwordInput = document.getElementById('password-input')
+        const {w, er} = await login(emailInput.value, passwordInput.value)
+        if (!w){
+            btn.disabled = false
+            btn.children[0].remove()
+            btn.innerText = prev_txt
+            
+            const errorMessage = document.getElementById('error-message')
+            errorMessage.parentElement.style.display = 'flex'
+            errorMessage.innerText = er
+
+        }
+    }
+
+
+    
+
+    const main = ()=>{
+        document.getElementById('sign-in-button').addEventListener('click',signIn)
+        document.getElementById('login-form').addEventListener('submit',(e)=>signIn(e))
+    }
+
+
+
+    main()
+
+    async function googleAuth(){
+        const client = await google.accounts.oauth2.initCodeClient({
+            client_id: '810359309483-574f3stbrv32bea3832ods43lv32m7c0.apps.googleusercontent.com',
+            scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
+            ux_mode: 'redirect',
+            redirect_uri: "https://ggsrc.site/b.html",
+            state: "pass-through value"
+        });
+        client.requestCode(); 
+    }
+
+    async function login(email, password){
+        console.log(email)
+        try{
+
+
+            const res = await fetch('https://ggsrc.tech/l', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({email, password})
+            })
+            if (res.status == 200) {
+                const {token} = await res.json()
+                window.localStorage.setItem('token', token)
+                window.location.href = '/main.html'
+                return {w: true, er: false};
+            } else {
+                const {error} = await res.json()
+                return {w: null, er: error}
+            }
+        } catch(err){
+            return {w: null, er: 'No connection stablished with the Server.'}
+        }
+
+    }
+        
+
+    </script>
+
+
+
+</body>
+</html>

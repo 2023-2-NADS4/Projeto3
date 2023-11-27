@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+
+
+    <link rel="stylesheet" href="./global.css">
+    <link rel="stylesheet" href="./socker.css">
+
+        <script src="./sockettest.js" defer></script>
+</head>
+
+
+
+<div style="width: 100vw; height: 100dvh;; overflow: hidden;">
+
+    <header id="header" class="f" style=" height: 60px; width: 100vw; align-items: center; justify-content: space-between; background-color: white; top: 0;
+    position: fixed; z-index: 1; padding: 0 15px 0 15px; gap: 12px;
+   transform: translateY(-100%); animation: slideToBottom 0.15s ease-in-out forwards; animation-delay: 0.3s; transition: top 0.2s;
+   left: 0;
+">
+
+<div class="f" id="go-back-button" style="align-items: center; padding: 10px;"> 
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#dbdbdb" class="bi bi-chevron-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" stroke="#dbdbdb" stroke-width=".4"/>
+    </svg>
+</div>
+   <div class="f f-cntr" style=" height: fit-content; gap: 12px;"> 
+           <img  id="user-image" src="" style="background-color: #dbdbdb; border-radius: 50%; height: 35px; width: 35px;  transition: transform 0.15s ease;" alt="">
+   </div>
+</header>
+
+
+
+    <div id="chat-info-main" style="display: none; flex-direction: column; align-items: center; justify-content: center; gap: 16px; height: 100dvh;; width: 100vw; margin: auto; overflow: hidden; padding: 10px; box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.20);
+    background-color: #FEC33B; 
+    transform: translateY(-100%); 
+    animation: slideToRight 0.25s ease-in-out forwards;
+">
+
+<img src="./lumberjack.png" style="width: 100%;" alt="">
+
+<div style="width: 100%; height: fit-content; margin-top: 8px;" class="f f-cntr f-col">
+                
+    <p class="fsz-09 fw-6" style="width: 80%; color: rgb(91, 91, 91); text-align: center;">
+        
+        Here you can change messages amoung the users on the platform such as sending and receiving offers.
+        Remember to be Respectful to the community.
+    </p>
+</div>
+
+<div class="f f-cntr f-col" style="width: 100%; gap: 10px;">
+
+    <button onclick="window.history.back() || `${window.location.href} = 'main.hmtl'`" class="fsz-11 fw-5 f f-cntr" style="background:#FEC33B; color: #CE4F2F; height: 50px;
+width: 50%; 
+">Voltar
+
+</button>
+
+    <button  id="0-continue-button" class="fsz-11 fw-6 f f-cntr" style="background: #CE4F2F; color: white; height: 55px;
+ width: 80%; border: 1px solid #CE4F2F;  border-radius: 15px;
+">Acessar Chat
+
+</button>
+</div>
+
+    </div>
+
+<div id="main-main-chat"  style=" height: 100dvh;; width: 100vw;  overflow: hidden;
+    transform: translateY(-100%); 
+    animation: slideToRight 0.3s ease-in-out forwards;
+">
+
+  
+    <!-- <div class="f f-col" style="width: 100%; height: 100%; position: relative;"> -->
+
+
+
+
+
+
+    <div style="position: relative; width: 100%; height: 100%; overflow: hidden;">
+
+        <div id="chat-container" style="width: 100vh; height: 100dvh;;  position: absolute; left: 100%; transition: 0.3s ease-in-out; z-index: 1;" class="f f-col">
+            <div style="width: 100vw; height: 60px; background: rgb(232, 232, 232); align-items: center; justify-content: space-between; padding: 0 15px 0 15px;" class="f">
+
+                <button onclick="goToContacts()" style="background: rgba(255, 255, 255, 0);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" stroke="white" strokeWidth="1"/>
+                      </svg>
+                    </button>
+
+                    <p id="chat-header-name" style="color: white;" class="fw-6"></p>
+
+                    <img id="chat-header-contact-image" class="rounded" style="width: 35px; height: 35px;" src="" alt="">
+            </div>
+            <div id="messages-container">
+
+            </div>
+            <div class="f" style="width: 100vw; height: 60px; padding: 8px ; gap: 8px; background-color: white;">
+
+                
+                    <input placeholder="Type in..." type="text" id="message-input" style="padding-left: 10px; border: none; flex-grow: 1; height: 100%; border-radius: 15px;">
+                
+           
+                <form onsubmit="sendMessage()" onclick="sendMessage()" class="f f-cntr fw-6" style="width: fit-content; height: 100%; background-color: var(--main-color); color: white; border-radius: 10px; padding: 0 15px 0 15px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                        <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"  stroke="white" strokeWidth="1"/>
+                      </svg>
+                </form>
+            </div>
+        </div>
+        
+
+
+  
+
+            <div class="f f-col" style="padding: 10px 15px 4px 15px; width: 100%;flex-grow: 1;overflow-y: scroll;">
+                <div id="contacts-container" class="f f-col" style="height: 500px; width: 100%; gap: 15px; padding-top: 60px; overflow: scroll;">
+                
+                
+                
+                
+                
+                </div>
+            </div>
+
+
+    
+        <!-- </div> -->
+
+       
+    
+        
+    </div>
+
+
+
+    </div>
+    </div>
+<body>
+
+    
+
+  
+</body>
+</html>

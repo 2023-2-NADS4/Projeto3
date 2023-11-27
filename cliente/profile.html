@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="./global.css">
+
+    <link rel="icon" href="./svg_logo.svg" type="image/svg">
+</head>
+<body>
+
+
+    <div id="cart-main" style="height: 100dvh;; width: 100vw; margin: auto; overflow: hidden; padding: 0; box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.20);
+    background-color: #f7f7f7; 
+    background-color: white; 
+    transform: translateY(-100%); 
+    animation: slideToTop 0.25s ease-in-out forwards;
+    padding-top: 30px;
+">
+
+
+<header id="header" class="f" style=" height: 60px; width: 100vw; align-items: center; justify-content: space-between; background-color: white; top: 0;
+position: fixed; z-index: 1; padding: 0 15px 0 15px; gap: 12px;
+transform: translateY(-100%); animation: slideToBottom 0.15s ease-in-out forwards; animation-delay: 0.3s; transition: top 0.2s;
+left: 0;
+">
+
+<div class="f" id="go-back-button" style="align-items: center; padding: 10px;"> 
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#dbdbdb" class="bi bi-chevron-left" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" stroke="#dbdbdb" stroke-width=".4"/>
+</svg>
+</div>
+<div class="f f-cntr" style=" height: fit-content; gap: 12px;"> 
+       <img  id="user-image" src="" style="background-color: #dbdbdb; border-radius: 50%; height: 35px; width: 35px;  transition: transform 0.15s ease;" alt="">
+</div>
+</header>
+
+
+
+  
+    <div class="f f-col" style="width: 100%; height: 100%; position: relative;">
+    
+    
+    
+    
+
+        
+        <div style="width: 100vw; height: 180px; position: relative; padding-top: 60px;" class="f f-cntr">
+            <input type="file" accept="image" id="imageInput" multiple style="width: 70%; height: 55px; position: absolute; inset: 0 0 0 0; margin: auto; z-index: 1; opacity: 0%;">
+            <img id="centered-image" class="rounded" src="" alt="" style="width: 110px; height: 110px;">
+            
+        </div>
+
+        
+<div style=" padding: 15px; width: 100%; height: fit-content; align-items: center;gap: 8px" class="f f-col">
+
+        <input id="email-input" disabled type="email" style="padding-left: 15px; border:none; background: #F2F2F2; width: 95%;  height: 55px; color: rgb(168, 168, 168);"  class="fw-6">
+    
+        <input id="name-input" type="text" style="padding-left: 15px; border:none; background: #F2F2F2; width: 95%;  height: 55px; color: rgb(100, 100, 100);"  class="fw-6">
+
+
+        <p style="width: 280px; text-align: center; color: #9b9b9b; margin: 24px 0 0 0;" class="fsz-08">Changes Made May Take 1 Minute Mostly to get Reflected due to Content Cache.</p>
+        
+        <div class="f f-col f-cntr"  style="gap: 8px; width: 95%; margin: 16px 0 16px 0; ">
+            <button id="page-go-back-btn" style="color: var(--main-color); background-color: rgba(255, 255, 255, 0); height: 55px; width: 95%;" class="f f-cntr fw-6 fsz-10">Back</button>
+    
+            <button id="update-button" style="color: white; background-color: var(--main-color); height: 55px; width: 95%;" class="f f-cntr fw-7 fsz-10">UPDATE</button>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+  
+
+
+    </div>
+    </div>
+
+
+
+
+
+
+    
+</body>
+
+<script defer>
+
+
+
+
+    async function update(){
+        if (IMGCHANGED){
+            const url = await getPreSignedURL()
+            if (url){
+                await usePreSignedUrl(url.url)
+                await sendFinalUpdateProfileRequest(url.key, document.getElementById('name-input').value);
+            }
+        } else {
+            await sendFinalUpdateProfileRequest(null, document.getElementById('name-input').value)
+        }
+        
+    }
+
+    const main = async ()=>{
+
+     
+        
+        const user = await getMyUserInfo()
+        console.log(user)
+ 
+        document.getElementById('name-input').value = user.name
+        document.getElementById('email-input').value = user.email
+        document.getElementById('centered-image').src = user.url
+        fitUserInfo(user.url)
+        handleBackButton()
+
+        document.getElementById('update-button').addEventListener('click', update)
+
+
+    }
+
+
+    let TOKEN = null;
+
+
+function handleBackButton(){
+        const backbtn = document.getElementById('go-back-button')
+        const pagebackbtn = document.getElementById('page-go-back-btn')
+        backbtn.addEventListener('click', goBack)
+        pagebackbtn.addEventListener('click', goBack)
+}
+function goBack(){
+        const r = window.localStorage.getItem('before-profile')
+            if (r){
+                window.localStorage.removeItem('before-profile')
+                window.location.href = r
+            } else {
+                window.history.back()
+            }
+    }
+async function getMyUserInfo() {
+    const token = window.localStorage.getItem('token')
+    if (!token) {
+        window.location.href= '/signin.html'
+        return;
+    }
+    TOKEN = token;
+
+    const res = await fetch('https://ggsrc.tech/gupiwefp', {
+        method: 'GET',
+        headers: {
+            'Authorization': TOKEN
+        }
+    })
+    if (res.status == 200) {
+        const { name, url, email } = await res.json()
+            return { name, url, email }
+    } else if (res.status == 403) { 
+        window.location.href= '/a.html'
+    }
+
+
+        return null;
+}
+function fitUserInfo(url) {
+    const img = document.getElementById('user-image')
+    img.src = url
+}
+
+
+main()
+
+
+const imageInput = document.getElementById('imageInput')
+let IMGCHANGED = null;
+imageInput.addEventListener('change', function () {
+
+  if (this.files.length == 1) {
+    if (this.files[0].type.split('/')[0] == 'image') {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        // Create a Blob from the base64-encoded data
+        const blob = new Blob([e.target.result], { type: 'image/jpeg' }); // Adjust the type based on the image type
+
+        // Create an object URL for the Blob
+        const objectURL = URL.createObjectURL(blob);
+        console.log(objectURL)
+        console.log(e.target.result)
+
+        // Set the object URL as the source of the image
+        document.getElementById('centered-image').src = objectURL;
+        IMGCHANGED = 1;
+      };
+
+      // Read the selected file as an ArrayBuffer (binary data)
+      reader.readAsArrayBuffer(this.files[0]);
+    }
+  } else {
+    // Handle multiple files or no files selected
+  }
+});
+
+
+async function getPreSignedURL(){
+    const res = await fetch(`https://ggsrc.tech/gurl?contentType=jpg&urls_number=1`, {
+        method: 'GET',
+        headers: {
+            'Authorization': TOKEN
+        }
+    })
+    if (res.status == 200) {
+        const {urls} = await res.json()
+        return urls[0]
+    }
+    return null;
+}
+
+async function usePreSignedUrl(url){
+        const res = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'image/jpg'
+            },
+            body: imageInput.files[0]
+        })
+        if (res.status == 200) {
+            console.log('uploaded')
+            // successfulResults.push();
+        } 
+
+}
+
+async function sendFinalUpdateProfileRequest(key, name){
+
+  
+    
+  
+        const data = {
+            user_image : key,
+            name: name
+        }
+
+        console.log(data)
+
+
+    const res = await fetch('https://ggsrc.tech/ump', {
+        method: 'POST',
+        headers: {
+            'Authorization': TOKEN,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    if (res.status == 200) {
+        window.location.href = 'profileupdated.html'
+    } else {
+        const {error} = await res.json()
+        console.log(error)
+    }
+    return null;
+}
+</script>
+</html>

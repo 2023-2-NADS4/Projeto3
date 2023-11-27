@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAuth</title>
+
+    <link rel="icon" href="./svg_logo.svg" type="image/svg">
+    <link rel="stylesheet" href="./global.css">
+
+    <style>
+                body{
+            background-color: #f7f7f7;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="position: relative; overflow: hidden; height: 100dvh;; width: 100vw;">
+
+        <div style="animation: 0.3s slideToRight; height: 100dvh;; width: 100vw; gap: 25px;" class="f f-cntr f-col">
+
+       
+      
+
+       
+            <div id="page-spinner"  class="spinner big-spinner" style="display: unset;"></div>
+            <div id="retry-painel" class="f f-col f-cntr"  style="gap: 25px; display: none;">
+                <p id="retry-error-message"  class="fw-4 fsz-09" style="gap: 6px; margin: 16px 0 32px 0; width: 250px; text-align: center; color: #909090;">
+          
+              
+                </p>
+            
+                <button id="retry-button" style="margin: 8px 0 16px 0; color: white; background-color: var(--main-color); height: 55px; width: 95%;" class="f f-cntr fw-7 fsz-10">TRY AGAIN</button>
+
+     
+
+                <button id="retry-go-back-button" style="color: var(--main-color); background-color: rgba(255, 255, 255, 0); height: 55px; width: 95%;" class="f f-cntr fw-7 fsz-10">Go Back</button>
+            </div>
+
+            <div id="no-retry-painel" class="f f-col f-cntr"  style="gap: 25px; display: none;">
+                <p id="no-retry-error-message"  class="fw-4 fsz-09" style="gap: 6px; margin: 16px 0 32px 0; width: 250px; text-align: center; color: #909090;">
+          
+              
+                </p>
+            
+
+                <button id="no-retry-go-back-button" style="margin: 8px 0 16px 0; color: white; background-color: var(--main-color); height: 55px; width: 95%;" class="f f-cntr fw-7 fsz-10">LOGIN</button>
+
+                <button id="no-retry-go-back-button" style="color: white; background-color: var(--main-color); height: 55px; width: 95%;" class="f f-cntr fw-7 fsz-10">RESET PASSWORD</button>
+            
+     
+            </div>
+        </div>
+        
+    </div>
+
+    <script defer>
+        
+
+     
+
+        
+        const retryPainel = document.getElementById('retry-painel')
+        const retryButton = document.getElementById('retry-button')
+        const retryErrorMessage = document.getElementById('retry-error-message')
+        const rgbb = document.getElementById('retry-go-back-button')
+        
+        const nrp = document.getElementById('no-retry-painel')
+        const noretryErrorMessage = document.getElementById('no-retry-error-message')
+        const nrgbb = document.getElementById('no-retry-go-back-button')
+        nrgbb.addEventListener('click', goBack)
+        rgbb.addEventListener('click', goBack)
+ 
+        const goBackButton = document.getElementById('go-back-button')
+        const errorTitle = document.getElementById('error-title')
+        
+        const pageSpinner = document.getElementById('page-spinner')
+
+        function goBack(){
+            window.location.href = '/a.html'
+        }
+
+
+        retryButton.addEventListener('click', async (e)=>{
+            
+            e.target.disabled = true;
+            let prev_txt = e.target.innerText
+            e.target.innerText = null
+
+            retryErrorMessage.innerText = null
+            
+            const spinner = document.createElement('div')
+            spinner.className = 'spinner'
+            e.target.append(spinner)
+       
+
+            const code = getCode()
+            await sendcode(code)
+
+            e.target.disabled = false
+            e.target.children[0].remove()
+            e.target.innerText = prev_txt
+
+
+
+
+                
+           
+
+        })
+
+        async function sendcode(code){
+
+            const res = await fetch(`https://ggsrc.tech/auth/google/callback?code=${code}`)
+            
+            console.log(res.status)
+            if (res.status == 409){ // already exists in default auth
+                const {error} = await res.json()
+                
+                showErrorWithNoOptionToTryAgain(error)
+
+            } else if (res.status == 200){
+                const {token} = await res.json()
+                window.localStorage.setItem('token', token)
+                window.location.href = '/main.html'
+            } else {
+                const {error} = await res.json()
+                showErrorWithTryAgain(error)
+            }
+           
+    
+        }
+
+        // sendcode()
+
+
+        function showErrorWithNoOptionToTryAgain(e){
+            console.log('ok2')
+            pageSpinner.style.display = 'none'
+            retryPainel.style.display = 'none'
+            
+            nrp.style.display = 'unset'
+            noretryErrorMessage.innerText = e
+
+        }
+
+        function showErrorWithTryAgain(e){
+            console.log('ok')
+            pageSpinner.style.display = 'none'
+            nrp.style.display = 'none'
+
+
+            retryErrorMessage.innerText = e
+            retryPainel.style.display = 'unset'
+        }
+
+
+
+
+
+        function getCode(){
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code')
+            if (!code){
+                showErrorWithNoOptionToTryAgain()
+            } else {
+                return code
+            }
+        }
+        
+        const main = async () => {
+            const code = getCode()
+            await sendcode(code)
+        }
+
+        main()
+
+
+
+
+
+
+    </script>
+</body>
+</html>

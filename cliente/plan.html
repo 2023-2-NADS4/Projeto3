@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plans</title>
+
+    <link rel="icon" href="./svg_logo.svg" type="image/svg">
+    <link rel="stylesheet" href="global.css">
+</head>
+<body>
+
+    <div style="position: relative; margin: 0; height: fit-content;width: 100vw; overflow: hidden; min-height: 100dvh;; overflow: scroll;">
+
+
+   
+
+    <div id="main-scrolled" 
+    style="width: 100vw; height: 100dvh;; top: 0; 
+     position: absolute;
+      background-color: #f7f7f7; overflow-y: scroll;
+      animation: slideToTop 0.25s ease-in-out forwards"
+    >
+    
+    <button id="go-back-button" style="width: fit-content; border: none; padding: 15px; background-color: unset; position: absolute; top: 5px; right: 5px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#E6E6E6" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" stroke="#E6E6E6" strokeWidth="1"/>
+        </svg>
+    </button>
+
+
+<div class="f f-col" style="width: 100%; height: fit-content; padding: 15px; gap: 16px; margin-top: 60px;">
+    <div style="width: 100%; background-color: #E6E6E6; height: fit-content;  border-radius: 10px; padding: 15px; color: rgb(64, 64, 64);">
+        <p class="fw-6">Free</p>
+        <h1>$0</h1>
+        <ul>
+            <li>Have 2 Published Products.</li>
+            <li>Have Most of 5 Items on the Cart.</li>
+            <li>Have Most of 10 Favorites Products.</li>
+        </ul>
+    </div>
+
+    <div style="width: 100%; background-color: var(--main-color); height: fit-content; color: white; border-radius: 10px; padding: 15px;">
+        <p class="fw-6">Premium</p>
+        <h1>R$8</h1>
+        <ul>
+            <li>Publish +5 Products.</li>
+            <li>Have Unlimited Items on the Cart.</li>
+            <li>Have Unlimited Number of Favorites Products.</li>
+            <li>Rate Products.</li>
+        </ul>
+    </div>
+
+    <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png"
+    style="width: 60px;"
+    alt=""> -->
+
+</div>
+
+
+</div>
+</div>
+
+<script defer>
+
+function handleBackButton(){
+    const backbtn = document.getElementById('go-back-button')
+        backbtn.addEventListener('click', ()=> {
+        const r = window.localStorage.getItem('before-plan')
+        if (r){
+            window.localStorage.removeItem('before-plan')
+            window.location.href = r
+        } else {
+            window.history.back()
+        }
+    })
+}
+
+    const main = ()=>{
+        handleBackButton()
+    }
+
+    main()
+</script>
+</body>
+</html>

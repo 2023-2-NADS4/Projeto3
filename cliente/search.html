@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="global.css">
+    
+
+</head>
+<body style="
+    width: 100vw;
+    height: 100dvh;;
+    display: flex;
+    flex-direction: column;
+">
+    
+
+    <div style="height: fit-content;  background-color: white;">
+
+        <div class="f" style="padding: 0 15px 0 15px; height: 60px; align-items: center;">
+            <button class="f f-cntr" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#6A6A6A" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+            </button>
+        </div>
+  
+        <div  style="padding: 4px 15px 4px 15px;">
+            <h2 class="fsz-17 fw-7" style="color: black;">Search</h2>
+            <!-- <h2 class="fsz-11 fw-6" style="color: #6A6A6A">Search</h2> -->
+        </div>
+
+        <div  style="padding: 4px 15px 4px 15px; height: 40px;">
+            <div style="height: 40px; background-color: whitesmoke;  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.353);" class="f f-cntr">
+                <input type="text" style="flex-grow: 1; height: 100%; border: none; padding-left: 5px;">
+                <button class="f f-cntr" style="width: 80px;  height: 100%; background-color: unset; border-left: 1px solid rgb(180, 180, 180);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#6A6A6A" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+          <!-- <p>Select the Categories</p> -->
+
+ 
+        <div class="wrapper" style="overflow-x: scroll; padding: 20px 15px 20px 15px; display: grid; width: 100%; display: flex; justify-content: flex-start; align-items: center; gap: 8px;">
+            <div class="fsz-09 fw-6" style="height: 28px; border-radius: 45px;
+             width: fit-content;padding: 0 20px 0 20px; color: white; background: var(--main-color);
+              text-align: center; display: flex; align-items: center; justify-content: center;">
+                All
+            </div>
+            <div class="fsz-09 fw-6" style="height: 28px; border-radius: 45px;
+             width: fit-content;padding: 0 20px 0 20px;  background: black;
+              text-align: center; display: flex; align-items: center; justify-content: center; color: #ffffff">
+                Organic
+            </div>
+            <div class="fsz-09 fw-6" style="height: 28px; border-radius: 45px;
+             width: fit-content;padding: 0 20px 0 20px;  background: black;
+              text-align: center; display: flex; align-items: center; justify-content: center; color: #ffffff">
+                Promo
+            </div>
+            <div class="fsz-09 fw-6" style="height: 28px; border-radius: 45px;
+             width: fit-content;padding: 0 20px 0 20px;  background: black;
+              text-align: center; display: flex; align-items: center; justify-content: center; color: #ffffff">
+                Oat
+            </div>
+            <div class="fsz-09 fw-6" style="height: 28px; border-radius: 45px;
+             width: fit-content;padding: 0 20px 0 20px;  background: black;
+              text-align: center; display: flex; align-items: center; justify-content: center; color: #ffffff">
+                Tomato
+            </div>
+            <div class="fsz-09 fw-6" style="height: 28px; border-radius: 45px;
+             width: fit-content;padding: 0 20px 0 20px;  background: black;
+              text-align: center; display: flex; align-items: center; justify-content: center; color: #ffffff">
+                Vegan
+            </div>
+            <div class="fsz-09 fw-6" style="height: 28px; border-radius: 45px;
+             width: fit-content;padding: 0 20px 0 20px;  background: black;
+              text-align: center; display: flex; align-items: center; justify-content: center; color: #ffffff">
+                Veggie
+            </div>
+        </div>
+        
+        <div class="f" style="justify-content: space-between; align-items: center; padding: 4px 15px 4px 15px;">
+            <div class="f" style="align-items: center;gap:4px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                    <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+                <p class="fsz-08">Filters</p>
+            </div>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+                <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
+            </svg>
+        </div>
+      </div>
+
+
+      <div  class="f f-col f-cntr" style="padding: 10px 15px 4px 15px; width: 100%;flex-grow: 1;overflow-y: scroll; gap: 12px;">
+        <!-- <div class="big-spinner"></div> -->
+        <img src="./notfound.png" alt="" style="width: 120px; height: 120px;">
+        <h1 class="fsz-11"  style="color: #acacac">Not Found</h1>
+      </div>
+
+
+      <!-- <div class="f f-col" style="padding: 10px 15px 4px 15px; width: 100%;flex-grow: 1;overflow-y: scroll;">
+
+
+        <div class="f f-col" style="height: fit-content; width: 100%; gap: 15px;">
+
+            
+
+
+        <div style="width: 100%; height: fit-content; overflow: hidden; position: relative; box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.17); background: white;" class="f">
+            <img style="width: 120px; height: 120px;" src="https://images.pexels.com/photos/3687927/pexels-photo-3687927.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            <div class="f f-cntr" style="border-radius: 50%; width: 40px; height: 40px; position: absolute; top: 150px; right: 5px; background-color: white; box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.17);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="var(--main-color)" class="bi bi-heart" viewBox="0 0 16 16">
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                </svg>
+            </div>
+            
+            <div class="f f-col" style="align-items: flex-start; justify-content: start; padding: 4px 8px 4px 8px; gap: 8px; width: 100%;">
+                <div class="f f-col">
+                    <p class="fsz-12 fw-6 f f-cntr " style="color: #272727;">Avocado</p>
+                    <p class="fsz-08 f f-cntr" style="color: #BBBBBB;">Vegetarian</p>
+                </div>
+                <div class="f f-cntr" style="">
+                <div class="f" style="gap: 4px; align-items: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                </div>
+    
+            </div>
+           
+            <div class="f" style="align-items: center; justify-content: space-between; width: 100%;">
+                <p class="fsz-10 fw-6 f f-cntr" style="color: #272727">59R$</p>
+                <button class="clr-white" style="background-color: var(--main-color); padding: 4px 18px 4px 18px; border-radius: 20px;">Add to Cart</button>
+            </div>
+            </div>
+        </div>
+
+
+
+
+        <div style="width: 100%; height: fit-content; overflow: hidden; position: relative; box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.17); background: white;" class="f">
+            <img style="width: 120px; height: 120px;" src="https://images.pexels.com/photos/3687927/pexels-photo-3687927.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            <div class="f f-cntr" style="border-radius: 50%; width: 40px; height: 40px; position: absolute; top: 150px; right: 5px; background-color: white; box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.17);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="var(--main-color)" class="bi bi-heart" viewBox="0 0 16 16">
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                </svg>
+            </div>
+            
+            <div class="f f-col" style="align-items: flex-start; justify-content: start; padding: 4px 8px 4px 8px; gap: 8px; width: 100%;">
+                <div class="f f-col">
+                    <p class="fsz-12 fw-6 f f-cntr " style="color: #272727;">Avocado</p>
+                    <p class="fsz-08 f f-cntr" style="color: #BBBBBB;">Vegetarian</p>
+                </div>
+                <div class="f f-cntr" style="">
+                <div class="f" style="gap: 4px; align-items: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                </div>
+    
+            </div>
+           
+            <div class="f" style="align-items: center; justify-content: space-between; width: 100%;">
+                <p class="fsz-10 fw-6 f f-cntr" style="color: #272727">59R$</p>
+                <button class="clr-white" style="background-color: var(--main-color); padding: 4px 18px 4px 18px; border-radius: 20px;">Add to Cart</button>
+            </div>
+            </div>
+        </div>
+
+
+
+        <div style="width: 100%; height: fit-content; overflow: hidden; position: relative; box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.17); background: white;" class="f">
+            <img style="width: 120px; height: 120px;" src="https://images.pexels.com/photos/3687927/pexels-photo-3687927.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            <div class="f f-cntr" style="border-radius: 50%; width: 40px; height: 40px; position: absolute; top: 150px; right: 5px; background-color: white; box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.17);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="var(--main-color)" class="bi bi-heart" viewBox="0 0 16 16">
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                </svg>
+            </div>
+            
+            <div class="f f-col" style="align-items: flex-start; justify-content: start; padding: 4px 8px 4px 8px; gap: 8px; width: 100%;">
+                <div class="f f-col">
+                    <p class="fsz-12 fw-6 f f-cntr " style="color: #272727;">Avocado</p>
+                    <p class="fsz-08 f f-cntr" style="color: #BBBBBB;">Vegetarian</p>
+                </div>
+                <div class="f f-cntr" style="">
+                <div class="f" style="gap: 4px; align-items: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                </div>
+    
+            </div>
+           
+            <div class="f" style="align-items: center; justify-content: space-between; width: 100%;">
+                <p class="fsz-10 fw-6 f f-cntr" style="color: #272727">59R$</p>
+                <button class="clr-white" style="background-color: var(--main-color); padding: 4px 18px 4px 18px; border-radius: 20px;">Add to Cart</button>
+            </div>
+            </div>
+        </div>
+
+
+        
+        <div style="width: 100%; height: fit-content; overflow: hidden; position: relative; box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.17); background: white;" class="f">
+            <img style="width: 120px; height: 120px;" src="https://images.pexels.com/photos/3687927/pexels-photo-3687927.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+            <div class="f f-cntr" style="border-radius: 50%; width: 40px; height: 40px; position: absolute; top: 150px; right: 5px; background-color: white; box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.17);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="var(--main-color)" class="bi bi-heart" viewBox="0 0 16 16">
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                </svg>
+            </div>
+            
+            <div class="f f-col" style="align-items: flex-start; justify-content: start; padding: 4px 8px 4px 8px; gap: 8px; width: 100%;">
+                <div class="f f-col">
+                    <p class="fsz-12 fw-6 f f-cntr " style="color: #272727;">Avocado</p>
+                    <p class="fsz-08 f f-cntr" style="color: #BBBBBB;">Vegetarian</p>
+                </div>
+                <div class="f f-cntr" style="">
+                <div class="f" style="gap: 4px; align-items: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#FFBA49" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                </div>
+    
+            </div>
+           
+            <div class="f" style="align-items: center; justify-content: space-between; width: 100%;">
+                <p class="fsz-10 fw-6 f f-cntr" style="color: #272727">59R$</p>
+                <button class="clr-white" style="background-color: var(--main-color); padding: 4px 18px 4px 18px; border-radius: 20px;">Add to Cart</button>
+            </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <p class="fsz-09 fw-6" style="text-align: center; color: rgb(180,180,180); width: 100%; margin-top: 8px;">End of Results</p>
+
+
+      </div> -->
+
+
+
+</body>
+
+<script defer>
+    async function getusers(product_id) {
+    const res = await fetch(`https://ggsrc.tech/gusers?search=a&pack=2`, {
+        method: 'GET',
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        }
+    })
+    if (res.status == 200) {
+        const d = await res.json()
+        console.log(d)
+    } else {
+        const d = await res.json()
+        console.log(d)
+        console.log('error')
+    }
+
+}
+
+let TOKEN = null;
+
+
+async function getMyUserInfo() {
+    const token = window.localStorage.getItem('token')
+    if (!token) {
+        window.location.href= '/signin.html'
+        return;
+    }
+    TOKEN = token;
+
+    const res = await fetch('https://ggsrc.tech/gui', {
+        method: 'GET',
+        headers: {
+            'Authorization': TOKEN
+        }
+    })
+    if (res.status == 200) {
+        const { name, url } = await res.json()
+            return { name, url }
+    } else if (res.status == 403) { 
+        window.location.href= '/a.html'
+    }
+
+
+        return null;
+}
+
+getMyUserInfo()
+
+getusers()
+</script>
+</html>

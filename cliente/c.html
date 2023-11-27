@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <link rel="icon" href="./svg_logo.svg" type="image/svg">
+    <link rel="stylesheet" href="./global.css">
+    <link rel="stylesheet" href="./ac.css">
+
+</head>
+<body >
+
+
+    <div style="position: relative; margin: 0; height: fit-content;width: 100vw; overflow: hidden; min-height: 100dvh;;      overflow: scroll;">
+
+        <div id="error" style="position: fixed; inset: 20px auto auto auto; width: 90%; background-color: var(--sec-color); padding: 30px;  transition: 1.5s ease-in-out; z-index: 2; left: 0; right: 0; margin: auto; opacity: 0%; display: none;">
+            <p class="fw-7 fsz-09 f f-col" style="color: white; padding: 0 15px 0 15px; gap: 8px;">
+               Passwords do not match!
+            </p>
+        </div>
+ 
+
+
+    <div
+    style="width: 100vw; height: 100dvh;; top: 0; 
+     position: absolute;
+     animation: slideToRight 0.25s ease-in-out forwards;overflow-y: scroll;
+    "
+    >
+
+  
+    
+    <div  style="position: absolute; width: 100vw; margin: auto; left: 0; right: 0; padding: 15px 15px 0 15px;">
+       
+        <button class="f" id="back-route-button" style="display: none; position: relative; background-color: unset; border: none;">
+
+            <div  style="width: 100%; height: 100%; position: absolute; background: rgba(255, 255, 255, 0); z-index: 1; "></div>
+
+            <svg  style="" xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="rgb(210,210,210)" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+            </svg>
+        </button>
+            
+    </div>
+
+    
+
+
+    <div class="f f-col" style="gap: 32px; height: fit-content; justify-content: flex-start; align-items: center; padding-bottom: 48px;  width: 100%; padding-top: 48px;">
+
+            
+        <img src="./flag.png" style="width: 160px; margin-bottom: 16px;" alt="">
+     
+
+    <!-- <h1 style="color: #6A6A6A; padding: 0 0 0 15px; text-align: center; width: 100%;">Sign In</h1> -->
+
+    <div class="f f-col" style=" align-items: center; gap: 16px; padding: 0 15px 0 15px; width: 100vw;">
+
+        <!-- <img src="logo.png" style="width: 150px;" alt=""> -->
+        <!-- <h1 style="margin-bottom: 25px;">Sign Up</h1> -->
+
+        <input id="name-input" placeholder="name" type="text" style="padding-left: 15px; border:none; background: #F2F2F2; width: 95%;  height: 55px; color: rgb(100, 100, 100);"  class="fw-6">
+
+        <input id="email-input" placeholder="email" type="email" style="padding-left: 15px; border:none; background: #F2F2F2; width: 95%;  height: 55px; color: rgb(100, 100, 100);"  class="fw-6">
+
+        <input id="password-input" placeholder="password" type="password" style="padding-left: 15px; border:none; background: #F2F2F2; width: 95%;  height: 55px; color: rgb(100, 100, 100);"  class="fw-6">
+
+        <input id="confirm-password-input" placeholder="confirm password" type="password" style="padding-left: 15px; border:none; background: #F2F2F2; width: 95%;  height: 55px; color: rgb(100, 100, 100);"  class="fw-6">
+
+        <div  class="f f-cntr" style="display: none; gap: 6px; color: var(--sec-color); width: 250px; margin: 12px 0 12px 0;">
+            <p id="error-message" class="fw-5 fsz-09" style="color: var(--sec-color); text-align: center;"></p>
+          </div>
+        
+
+        <button id="sign-up-btn" style="color: white; background-color: var(--main-color); height: 55px; width: 95%;" class="f f-cntr fw-7 fsz-10">REGISTER</button>
+
+        <div onclick="googleAuth()" style="width: 95%; height: 55px; padding: 5px; background-color: white;  border: 1px solid rgb(211, 211, 211);" class="f f-cntr">
+            <div id="custom-google-button"  style="width: fit-content; height: fit-content;">
+                <span class="google-icon"></span>
+            </div>
+        </div>
+
+
+
+
+
+   
+     
+
+      
+
+
+
+        <div style="margin-top: 16px;">
+            <p class="fsz-08" style="color: #736F7C;">Already have an account? <a href="/a.html" style="text-decoration: none; color: var(--main-color);" class="fw-6">Login</a></p>
+        </div>
+        
+        
+
+
+    </div>
+
+    </div>
+
+
+</div>
+
+</div>
+    <!-- <img class="bottom-detail-image" src="https://clipart-library.com/new_gallery/46-466402_kitchen-basics-ingredients-transparent-fruits-and-vegetables-png.png" alt=""> -->
+</body>
+
+<script defer>
+    const btn = document.getElementById('sign-up-btn')
+    const error = document.getElementById('error')
+
+    const nameInput = document.getElementById('name-input')
+   
+    const emailInput = document.getElementById('email-input')
+    
+    
+    const passwordInput = document.getElementById('password-input')
+   
+    const confirmPasswordInput = document.getElementById('confirm-password-input')
+
+
+
+    function showElement(element){
+        element.style.display = 'unset';
+    }
+    function hideElement(element){
+        element.style.display = 'none';
+    }
+
+
+    btn.addEventListener('click', async (e) =>{
+
+        e.target.disabled = true
+        let prev_txt = e.target.innerText
+        e.target.innerText = null
+        const spinner = document.createElement('div')
+        spinner.className = 'spinner'
+        e.target.append(spinner)
+        
+        const nameInput = document.getElementById('name-input')
+        const emailInput = document.getElementById('email-input')
+        const passwordInput = document.getElementById('password-input')
+        const {w, er} = await signUp(nameInput.value, emailInput.value, passwordInput.value)
+        if (!w){
+            e.target.disabled = false
+            e.target.children[0].remove()
+            e.target.innerText = prev_txt
+            
+            const errorMessage = document.getElementById('error-message')
+            errorMessage.parentElement.style.display = 'flex'
+            errorMessage.innerText = er
+        }  
+    })
+
+
+
+
+
+
+
+    const backButton = document.getElementById("back-route-button")
+
+
+
+
+        async function signUp(name, email, password){
+           try{
+            const res = await fetch('https://ggsrc.tech/rf', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({name, email, password})
+        })
+        if (res.status == 200) {
+            window.location.href = `/mail.html?email=${email}`
+            return {w: true, er: null};
+        } else {
+            const {error} = await res.json()
+            return {w: null, er: error}
+        }
+
+    } catch(err){
+        return {w: null, er: 'No connection stablished with the Server.'}
+    }
+
+    }
+</script>
+</html>

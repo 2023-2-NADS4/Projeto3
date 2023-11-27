@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratings</title>
+    <link rel="icon" href="./svg_logo.svg" type="image/svg">
+    <link rel="stylesheet" href="global.css">
+
+</head>
+<body style="background: #F5F5F5;">
+
+
+    <div id="cart-main" style="height: 100dvh;; width: 100vw; margin: auto; overflow: hidden; padding: 0; box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.20);
+    background-color: #f7f7f7; 
+    background-color: white; 
+    transform: translateY(-100%); 
+    animation: slideToTop 0.25s ease-in-out forwards;
+    padding-top: 30px;
+">
+
+
+<header id="header" class="f" style=" height: 60px; width: 100vw; align-items: center; justify-content: space-between; background-color: white; top: 0;
+position: fixed; z-index: 1; padding: 0 15px 0 15px; gap: 12px;
+transform: translateY(-100%); animation: slideToBottom 0.15s ease-in-out forwards; animation-delay: 0.3s; transition: top 0.2s;
+left: 0;
+">
+
+<div class="f" id="go-back-button" style="align-items: center; padding: 10px;"> 
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#dbdbdb" class="bi bi-chevron-left" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" stroke="#dbdbdb" stroke-width=".4"/>
+</svg>
+</div>
+<div class="f f-cntr" style=" height: fit-content; gap: 12px;"> 
+       <img  id="user-image" src="" style="background-color: #dbdbdb; border-radius: 50%; height: 35px; width: 35px;  transition: transform 0.15s ease;" alt="">
+</div>
+</header>
+
+<div class="f f-col" style="width: 100%; height: 100%; position: relative; background-color: #f7f7f7;">
+    
+    <div id="ratings-container" class="f f-col" style="gap: 10px; padding: 0 15px 150px 15px;  padding-top: 50px; overflow: scroll;"></div>
+    
+
+    
+
+
+</div>
+</div>
+
+
+
+
+
+
+    <div style="padding: 15px; width: 100%; position: fixed; bottom: 0; z-index: 2;">
+<div id="buttons-parent" class="f" style="gap: 10px; padding: 8px;">
+          
+
+    <button id="wrb" class="fsz-11 fw-7 clr-white f f-cntr" style="display: none; height: 65px; background-color: var(--main-color); padding: 20px; flex-grow: 1; border-radius: 15px; gap: 8px;">
+         
+              Write a Review
+   
+    </button>
+            
+        </div>
+    </div>
+
+
+</body>
+
+
+<script defer>
+    let TOKEN = null;
+    
+const main = async ()=>{
+
+
+    const wrb = document.getElementById('wrb')
+
+    setTimeout(() => {
+        wrb.style.display = 'unset'
+    }, 250);
+
+    wrb.addEventListener('click', goToPlan)
+
+
+
+    const urlParams = new URLSearchParams(window.location.search);  
+    const productId = urlParams.get('id');
+    if (!productId)return;
+
+    const user = await getMyUserInfo()
+
+
+    fitUserInfo(user.url)
+   
+
+    const product_ratings = await getProductRatings(productId)
+    if (product_ratings.length > 0){
+        product_ratings.forEach(rating =>{
+            document.getElementById('ratings-container').append(createRatingElement(rating))
+        })
+    console.log(product_ratings)
+    handleBackButton()
+}
+}
+main()
+
+
+
+
+async function getProductRatings(id){
+        const res = await fetch(`https://ggsrc.tech/gpr?id=${id}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        },
+    })
+    if (res.status == 200){
+        const {ratings} = await res.json()
+        return ratings
+    } else {
+        const data = await res.json()
+        console.log('err')
+        console.log(data)
+        return null
+    }
+}
+
+
+
+function handlestarcreation(r) {
+    let stars = []
+    for (let i = 0; i <= 5; i++){
+        let s = document.createElement('span');
+        if (i < r) {
+            s.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="var(--sec-color)" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                </svg>
+            `
+        } else {
+            s.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="var(--sec-color)" class="bi bi-star" viewBox="0 0 16 16">
+  <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+</svg>
+            `
+        }
+        stars.push(s)
+    }
+
+    return `${stars[0].outerHTML} ${stars[1].outerHTML} ${stars[2].outerHTML} ${stars[3].outerHTML} ${stars[4].outerHTML}`;
+}
+
+
+function createRatingElement(rating){
+    const div = document.createElement('div')
+    div.cLassName = 'f f-col'
+    div.style = 'width: 100%; background: white; height: fit-content; padding: 15px; gap: 8px;'
+    div.addEventListener('click', () => goToUserPage(rating.user_id))
+
+    const img = document.createElement('img')
+
+    const stars = handlestarcreation(rating.rating)
+    
+
+
+    div.innerHTML = `
+    <div class="f f-col" style="gap: 4px; justify-content: start;">
+        <div class="f" style="justify-content: space-between; align-items: center;">
+                    <div class="f" style="gap: 4px; align-items: center;">
+                       ${stars}
+                    </div>
+         
+                </div>
+                
+                <div class="f" style="align-items: center; gap: 8px;">
+                    <img 
+                    class="rounded" style="width: 60px; height: 60px;background-color: #f0f0f0;" 
+                    src="${rating.user_image}" alt="">
+                    
+                    <div class="f f-col">
+                    <p class="fw-5 fsz-09" style="color:#858585;">${rating.user_name}</p>
+                    <p class="fw-4 fsz-07" style="color: #b0b0b0;">11-15-2023</p>
+                    </div>
+                    
+                </div>
+              
+                <p  style="color: #858585; text-align: justify;">${rating.comment}</p>
+                <div style="overflow-x: scroll; height: fit-content; width: 100%;">
+                  
+
+
+
+                </div>
+    `
+    return div
+}
+
+
+
+
+function handleBackButton(){
+        const backbtn = document.getElementById('go-back-button')
+        backbtn.addEventListener('click', goBack)
+}
+function goBack(){
+    const r = window.localStorage.getItem('before-rating')
+        if (r){
+            window.localStorage.removeItem('before-rating')
+            window.location.href = r
+        } else {
+            window.history.back()
+        }
+    }
+async function getMyUserInfo() {
+    const token = window.localStorage.getItem('token')
+    if (!token) {
+        window.location.href= '/signin.html'
+        return;
+    }
+    TOKEN = token;
+
+    const res = await fetch('https://ggsrc.tech/gupiwefp', {
+        method: 'GET',
+        headers: {
+            'Authorization': TOKEN
+        }
+    })
+    if (res.status == 200) {
+        const { name, url, email } = await res.json()
+            return { name, url, email }
+    } else if (res.status == 403) { 
+        window.location.href= '/a.html'
+    }
+
+
+        return null;
+}
+function fitUserInfo(url) {
+    const img = document.getElementById('user-image')
+    img.src = url
+    img.addEventListener('click', goToProfile)
+}
+
+function goToProfile(){
+        const pathAndQuery = window.location.pathname + window.location.search;
+        window.localStorage.setItem('before-profile', pathAndQuery)
+        window.location.href = 'profile.html'
+    }
+
+function goToUserPage(id){
+    const pathAndQuery = window.location.pathname + window.location.search;
+    window.localStorage.setItem('before-user', pathAndQuery)
+    window.location.href = `user.html?id=${id}`
+}
+function goToPlan(){
+    const pathAndQuery = window.location.pathname + window.location.search;
+    window.localStorage.setItem('before-plan', pathAndQuery)
+    window.location.href = `plan.html`
+}
+
+</script>
+</html>

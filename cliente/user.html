@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    <link rel="icon" href="./svg_logo.svg" type="image/svg">
+    <link rel="stylesheet" href="./global.css">
+</head>
+<body>
+    
+
+
+
+    <div id="cart-main" style="height: 100dvh;; width: 100vw; margin: auto; overflow: hidden; padding: 0; box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.20);
+    background-color: #f7f7f7; 
+    background-color: white; 
+    transform: translateY(-100%); 
+    animation: slideToTop 0.25s ease-in-out forwards;
+    padding-top: 30px;
+">
+
+
+<header id="header" class="f" style=" height: 60px; width: 100vw; align-items: center; justify-content: space-between; background-color: white; top: 0;
+position: fixed; z-index: 1; padding: 0 15px 0 15px; gap: 12px;
+transform: translateY(-100%); animation: slideToBottom 0.15s ease-in-out forwards; animation-delay: 0.3s; transition: top 0.2s;
+left: 0;
+">
+
+<div class="f" id="go-back-button" style="align-items: center; padding: 10px;"> 
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#dbdbdb" class="bi bi-chevron-left" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" stroke="#dbdbdb" stroke-width=".4"/>
+</svg>
+</div>
+<div class="f f-cntr" style=" height: fit-content; gap: 12px;"> 
+       <img  id="user-image" src="" style="background-color: #dbdbdb; border-radius: 50%; height: 35px; width: 35px;  transition: transform 0.15s ease;" alt="">
+</div>
+</header>
+
+
+
+  
+    <div class="f f-col" style="width: 100%; height: 100%; position: relative;">
+    
+    
+    
+    
+
+        
+        <div style="width: 100vw; height: 180px; position: relative; padding-top: 60px;" class="f f-cntr">
+            <input type="file" accept="image" id="imageInput" multiple style="width: 70%; height: 55px; position: absolute; inset: 0 0 0 0; margin: auto; z-index: 1; opacity: 0%;">
+            <img id="centered-image" class="rounded" src="" alt="" style="width: 110px; height: 110px;">
+            
+        </div>
+
+        
+<div style=" padding: 15px; width: 100%; height: fit-content; align-items: center;gap: 8px" class="f f-col">
+
+
+    
+    <h1 id="name-field" style="color: rgb(100, 100, 100);" class="fsz-18 fw-6">
+
+    </h1>
+
+
+
+        <p style="width: 280px; text-align: center; color: #9b9b9b; margin: 24px 0 0 0;" class="fsz-08">This Profile is Empty.</p>
+        
+        <div class="f f-col f-cntr"  style="gap: 8px; width: 95%; margin: 16px 0 16px 0; ">
+      
+    
+            <button id="message-button" style="color: white; background-color: var(--main-color); height: 40px; width: 180px;" class="f f-cntr fw-7 fsz-10">MESSAGE</button>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+  
+
+
+    </div>
+    </div>
+
+
+
+
+    <script defer>
+
+
+async function getMyUserInfo() {
+    const token = window.localStorage.getItem('token')
+    if (!token) {
+        window.location.href= '/signin.html'
+        return;
+    }
+    TOKEN = token;
+
+    const res = await fetch('https://ggsrc.tech/gupiwefp', {
+        method: 'GET',
+        headers: {
+            'Authorization': TOKEN
+        }
+    })
+    if (res.status == 200) {
+        const { name, url, email } = await res.json()
+            return { name, url, email }
+    } else if (res.status == 403) { 
+        window.location.href= '/a.html'
+    }
+
+
+        return null;
+}
+    
+function fitUserInfo(url) {
+    const userimage = document.getElementById('user-image')
+    userimage.src = url
+    userimage.addEventListener('click', goToProfile)
+}
+
+function handleBackButton(){
+        const backbtn = document.getElementById('go-back-button')
+        backbtn.addEventListener('click', goBack)
+    }
+
+    function goBack(){
+        const r = window.localStorage.getItem('before-user')
+            if (r){
+                window.localStorage.removeItem('before-user')
+                window.location.href = r
+            } else {
+                window.history.back()
+            }
+    }
+
+        const main = async ()=>{
+
+            const me = await getMyUserInfo()
+            fitUserInfo(me.url)
+
+            const searchParams = new URLSearchParams(window.location.search);
+            const id = searchParams.get("id");
+            const user = await getUserPublicInfo(id)
+            document.getElementById('centered-image').src = user.user_image
+            document.getElementById('name-field').innerText = user.name
+            console.log(user)
+            document.getElementById('message-button').addEventListener('click',() =>goToChat(user.id, user.name))
+         
+
+
+
+            handleBackButton()
+       
+
+        }
+
+        main()
+
+        async function getUserPublicInfo(id){
+            const res = await fetch(`https://ggsrc.tech/gupi?id=${id}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': window.localStorage.getItem('token')
+                }
+            })
+            if (res.status == 200) {
+                const {user} = await res.json()
+                return user;
+            } else {
+                const d = await res.json()
+                console.log(d)
+                return null
+            }
+        }
+
+        function goToChat(id, name){
+            const pathAndQuery = window.location.pathname + window.location.search;
+            window.localStorage.setItem('before-chat', pathAndQuery)
+            window.location.href = `/socker.html?contact_id=${id}&contact_name=${name}`
+        }
+
+   
+
+        function goToProfile(){
+    const pathAndQuery = window.location.pathname + window.location.search;
+    window.localStorage.setItem('before-profile', pathAndQuery)
+    window.location.href = 'profile.html'
+}
+
+    </script>
+</body>
+</html>

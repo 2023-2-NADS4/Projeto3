@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+
+    <link rel="icon" href="./svg_logo.svg" type="image/svg">
+    <link rel="stylesheet" href="./global.css">
+
+</head>
+<body style="background: white; overflow: hidden; width: 100vw; height: 100dvh;;">
+
+
+    <div style="overflow: hidden; width: 100vw; height: 100dvh;;">
+
+
+
+    <header id="header" class="f" style=" height: 60px; width: 100vw; align-items: center; justify-content: space-between; background-color: white; top: 0;
+    position: fixed; z-index: 1; padding: 0 15px 0 15px; gap: 12px;
+   transform: translateY(-100%); animation: slideToBottom 0.15s ease-in-out forwards; animation-delay: 0.3s; transition: top 0.2s;
+   left: 0;
+">
+
+<div class="f" id="go-back-button" style="align-items: center; padding: 10px;"> 
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#dbdbdb" class="bi bi-chevron-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" stroke="#dbdbdb" stroke-width=".4"/>
+    </svg>
+</div>
+   <div class="f f-cntr" style=" height: fit-content; gap: 12px;"> 
+           <img  id="user-image" src="" style="background-color: #dbdbdb; border-radius: 50%; height: 35px; width: 35px;  transition: transform 0.15s ease;" alt="">
+   </div>
+</header>
+
+ 
+
+
+
+        <div style="display: none; padding: 15px; width: 100%; position: fixed; bottom: 0; background-color: white; z-index: 2;">
+    <div id="buttons-parent" class="f" style="gap: 10px; padding: 8px;">
+
+
+        <button class="fsz-11 fw-7 clr-white" style="height: 65px; background-color: var(--main-color); padding: 20px; flex-grow: 1; border-radius: 15px;">
+            Add to Cart
+        </button>
+                
+            </div>
+        </div>
+
+    <div style="height: 100dvh;; width: 100vw; overflow: scroll;  
+        position: relative;
+
+        transform: translateX(-100%); 
+        animation: slideToRight 0.25s ease-in-out forwards;
+        ">
+
+
+
+
+        <!-- <div class="f" style="padding: 0 15px 0 15px; height: 60px; align-items: center;"> -->
+  
+
+
+        <!-- </div> -->
+
+
+        <!-- <img style="width: 100vw;" src="https://images.pexels.com/photos/1199562/pexels-photo-1199562.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""> -->
+
+       
+<div class="f f-col" style="width: 100vw; max-width: 100vw; padding-top: 60px; background-color: white;">
+
+
+    <div style="flex-grow: 1; height: fit-content; min-height: 180px; width: 100%; position: relative;">
+        <img id="main-image" style="width: 100%; height: 100%; background-color: whitesmoke;" src="" alt="">
+        
+        <button id="unlike-button" class="f f-cntr rounded"  style="display: none; height: 65px; width: 65px; background-color: var(--main-color); padding: 20px; border: 1px solid var(--main-color); position: absolute; bottom: -10px; right: 10px;"
+        >
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" class="bi bi-heart-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+        </svg>
+    </button>
+    <button  id="like-button" class="f f-cntr rounded"  style="display: none; height: 65px; width: 65px; background-color: white; padding: 20px; border: 1px solid white; position: absolute; bottom: -10px; right: 10px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" class="bi bi-heart-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" stroke="var(--main-color)" strokeWidth="3"/>
+        </svg>
+    </button>
+    </div>
+
+   
+
+    
+
+    
+    <div  class="f" style="position: relative;  width: fit-content;width: 100%; overflow: scroll; height: 65px; margin-top: 15px;">
+
+        <div id="images-options" class="f" style="width: fit-content; height: fit-content; position: absolute; left: 0;
+        justify-content: flex-start; gap: 8px; padding: 0 15px 0 15px;
+        ">
+
+            <img id="option-image-1" src="" style="width: 65px;height: 65px; background : gray; border-radius: 10px;">
+            
+        </div>
+    </div>
+        
+    </div>
+
+  
+
+    
+
+
+        <div style="padding: 15px; padding-top: 0; padding-bottom: 15px; background-color: white;">
+            <p id="product-name" class="fsz-20 fw-6" style="color: #3d3d3d; text-align: justify;"></p>
+            <p id="product-created_at" class="fsz-08 fw-5" style="color: #929292; text-align: justify; margin-bottom: 8px;"></p>
+            <div id="main-product-stars" class="f" style="gap: 4px;">
+
+            </div>
+
+            <div id="p-owner-card" class="f" style="gap: 8px; margin: 8px 0 8px 0;">
+                <img  id="product-owner-image" src="" style="width: 45px; height: 45px;" class="rounded" alt="">
+                <div class="f f-col" style="gap: 4px; justify-content: center;">
+                    <p id="product-owner-name" style="color: #929292;" class="fw-5 fsz-10"></p>
+                    <p id="product-owner-created_at" style="color: #929292;" class="fw-5 fsz-08"></p>
+                </div>   
+        </div>
+            <div class="f f-col" style="justify-content: space-between;">
+         
+           
+                <p id="product-description" style="color: #858585; text-align: justify;"></p>
+                
+            </div>
+
+            <div style="margin-top: 8px; gap: 6px;" class="f f-col">
+                <p class="fsz-09" id="product-quantity" style="color: #858585; text-align: justify;">Quantidade Disponivel: </p>
+                <p class="fsz-09" id="product-total-price" style="color: #858585; text-align: justify;">Preço: </p>
+                <p class="fsz-09" id="product-flex" style="color: #858585; text-align: justify;">Venda Flexivel: </p>
+                <p class="fsz-09" id="product-delivery" style="color: #858585; text-align: justify;">Entrega: </p>
+
+              
+            </div>
+        
+
+
+         
+
+
+
+
+
+            <div style="margin: 16px 0 8px 0;">
+        
+
+                <div id="comment-stars" class="f" style="gap: 4px;">
+
+                </div>
+                <div id="ratings-container-c" style="width: 100%; height: 60px; gap: 8px; overflow-x: scroll; position: relative;" class="f">
+                    <div style="width: fit-content; height: fit-content; position: absolute; left: 0; gap: 8px;" id="ratings-container" class="f">
+                      
+                        
+                    </div>
+                </div>
+
+                <div id="empty-ratings-container" style="width: 100%; height: 150px; background-color: white;" class="f f-cntr">
+                    <p style="color: rgb(197, 197, 197)">No Ratings yet.</p>
+  
+                </div>
+            </div>
+
+         
+            <!-- <span class="f">
+                <p>29.22</p>
+                <p>/200g</p>
+            </span> -->
+     
+
+
+
+            <div style="margin: 8px 0 8px 0;">
+                <div style="width: 100%; height: 330px; gap: 8px; overflow-x: scroll; position: relative;" class="f">
+                    <div style="width: fit-content; height: fit-content; position: absolute; left: 0; gap: 8px;" id=similar-container class="f">
+                        
+                        
+                    </div>
+                </div>
+            </div>
+      
+
+        </div>
+
+        <!-- 
+            quantidade disponivel
+            pack de venda
+
+            nome
+            descricao
+
+            tag (min 3 - max 5):
+            organico 
+            bem embalado
+
+            
+            coloraçao
+
+
+            fruta vs veggie vs other
+         -->
+
+    </div>
+    
+</div>
+</body>
+
+<script defer>
+
+function handleBackButton(){
+    const backbtn = document.getElementById('go-back-button')
+        backbtn.addEventListener('click', ()=> {
+        const r = window.localStorage.getItem('before-product')
+        if (r){
+            window.localStorage.removeItem('before-product')
+            window.location.href = r
+        } else {
+            window.history.back()
+        }
+    })
+}
+
+    let TOKEN = null;
+    
+    function goToProfile(){
+        const pathAndQuery = window.location.pathname + window.location.search;
+        window.localStorage.setItem('before-profile', pathAndQuery)
+        window.location.href = 'profile.html'
+    }
+
+    function goToUserPage(id){
+    const pathAndQuery = window.location.pathname + window.location.search;
+    window.localStorage.setItem('before-user', pathAndQuery)
+    window.location.href = `user.html?id=${id}`
+}
+
+function goToRating(id){
+    const pathAndQuery = window.location.pathname + window.location.search;
+    window.localStorage.setItem('before-rating', pathAndQuery)
+    window.location.href = `rating.html?id=${id}`
+}
+
+async function getTwnetyRatings(productsids) {
+    console.log(productsids)
+    const res = await fetch('https://ggsrc.tech/gpraac', {
+        method: 'POST',
+        body: JSON.stringify({ ids: productsids }),
+        headers: {
+            'Authorization': TOKEN,
+            'Content-Type': 'application/json'
+        }
+    })
+    if (res.status == 200) {
+        const { ratings } = await res.json()
+        console.log(ratings)
+        return ratings;
+    }
+    return null;
+}
+
+    const main = async ()=>{
+
+        const user = await getMyUserInfo()
+        const userHeaderImage = document.getElementById('user-image')
+        userHeaderImage.src = `${user.url}`
+        userHeaderImage.addEventListener('click', goToProfile)
+
+        const likes = await getMyLikes()
+        console.log(likes)
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        
+        if (!productId)return;
+
+        const product = await getProductById(productId)
+
+        const is_product_liked = likes.includes(productId.toString())
+        console.log('is_product_liked')
+        console.log(is_product_liked)
+        const buttonsParent = document.getElementById('buttons-parent')
+        const unlikebtn = document.getElementById('unlike-button')
+        const likebtn = document.getElementById('like-button')
+        if (is_product_liked){
+            unlikebtn.style.display = 'unset'
+        } else {
+            likebtn.style.display = 'unset'
+        }
+        likebtn.addEventListener('click', () => likeProduct(product.product_id))
+        unlikebtn.addEventListener('click', () => unlikeProduct(product.product_id))
+
+        
+
+        const ratings = await getProductRatings(productId)
+
+        const ratingscontainer = document.getElementById('ratings-container')
+        ratingscontainer.addEventListener('click', () => goToRating(productId))
+        if (!ratings){
+
+        } else if (ratings.length == 0){
+            document.getElementById('ratings-container-c').style.display = 'none'
+            document.getElementById('empty-ratings-container').style.display = 'flex'
+        } else {
+           
+            let i = 0;
+            ratings.forEach((rating) =>{
+                const img = document.createElement('img')
+                img.style = `position: absolute; width: 40px; height: 40px; background-color: white; border-radius: 50%; margin-left: ${i * 25}px;`
+                img.src = `${rating.user_image}`
+                ratingscontainer.append(img)
+                i++
+            })
+            // const ad = document.createElement('div')
+            //     ad.style = `position: absolute; width: 40px; height: 40px; background-color: var(--main-color); border-radius: 50%; margin-left: ${i * 25}px;`
+            //     ad.innerText = '+'
+            //     ratingscontainer.append(ad)
+           
+        }
+
+        if (product){
+
+            const mainImage = document.getElementById('main-image')
+            mainImage.src = `${product.url}`
+            const firstImage = document.getElementById('option-image-1')
+            firstImage.addEventListener('click', ()=>changeImage(1))
+            firstImage.src = `${product.url}`
+            const productName = document.getElementById('product-name')
+            productName.innerText += product.product_name
+
+            const productca = document.getElementById('product-created_at')
+            productca.innerText = `Publicado em ${product.created_at.substring(0,10)}`
+
+            const productDescription = document.getElementById('product-description')
+            productDescription.innerText += product.description
+
+            const productQuantity = document.getElementById('product-quantity')
+            productQuantity.innerText += product.available_quantity
+            const productTotalPrice = document.getElementById('product-total-price')
+            productTotalPrice.innerText += product.total_price
+            const productFlex = document.getElementById('product-flex')
+            productFlex.innerText += product.flexible_sell.data[0] ? 'Sim' : 'Não'
+            const productDelivery = document.getElementById('product-delivery')
+            productDelivery.innerText += product.delivery.data[0] ? 'Sim' : 'Não'
+
+            const pownercard = document.getElementById('p-owner-card')
+            pownercard.addEventListener('click', () => goToUserPage(product.user_id))
+
+
+            const productOwnerImage = document.getElementById('product-owner-image')
+            productOwnerImage.src = product.user_image || 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80'
+            const productOwnerName = document.getElementById('product-owner-name')
+            productOwnerName.innerText = product.user_name
+            const productOwnerca = document.getElementById('product-owner-created_at')
+            productOwnerca.innerText = `Juntou-se em ${product.created_at.substring(0,10)}`
+
+
+            if(product.url_2){
+                const imagesOptions = document.getElementById('images-options')
+                const imgtwo = document.createElement('img')
+                imgtwo.id = "option-image-2"
+                imgtwo.style='width: 65px;height: 65px; background : gray; opacity: 40%; border-radius: 10px;'
+                imgtwo.src = `${product.url_2}`
+                imgtwo.addEventListener('click', ()=>changeImage(2))
+                imagesOptions.append(imgtwo)
+
+                if (product.url_3){
+                    const imgthree = document.createElement('img')
+                    imgthree.id = "option-image-3"
+                    imgthree.style='width: 65px;height: 65px; background : gray; opacity: 40%; border-radius: 10px;'
+                    imgthree.src = `${product.url_3}`
+                    imgthree.addEventListener('click', ()=>changeImage(3))
+                    imagesOptions.append(imgthree)
+
+                    if (product.url_4){
+                        const imgfour = document.createElement('img')
+                        imgfour.id = "option-image-4"
+                        imgfour.style='width: 65px;height: 65px; background : gray; opacity: 40%; border-radius: 10px;'
+                        imgfour.src = `${product.url_4}`
+                        imgfour.addEventListener('click', ()=>changeImage(4))
+                        imagesOptions.append(imgfour)
+
+
+                        if (product.url_5){
+                        const imgFive = document.createElement('img')
+                        imgFive.id = "option-image-5"
+                        imgFive.style='width: 65px;height: 65px; background : gray; opacity: 40%; border-radius: 10px;'
+                        imgFive.src = `${product.url_5}`
+                        imgFive.addEventListener('click', ()=>changeImage(5))
+                        imagesOptions.append(imgFive)
+
+                        if (product.url_6){
+                        const imgSix = document.createElement('img')
+                        imgSix.id = "option-image-6"
+                        imgSix.style='width: 65px;height: 65px; background : gray; opacity: 40%; border-radius: 10px;'
+                        imgSix.src = `${product.url_6}`
+                        imgSix.addEventListener('click', ()=>changeImage(6))
+                        imagesOptions.append(imgSix)
+
+                        if (product.url_7){
+                        const imgSeven = document.createElement('img')
+                        imgSeven.id = "option-image-7"
+                        imgSeven.style='width: 65px;height: 65px; background : gray; opacity: 40%; border-radius: 10px;'
+                        imgSeven.src = `${product.url_7}`
+                        imgSeven.addEventListener('click', ()=>changeImage(7))
+                        imagesOptions.append(imgSeven)
+                        }
+
+                        }
+                        }
+
+                    }
+                }
+
+            }
+        }
+       
+        const similar_products = await getThreeSimilarProduct(product.product_id, product.color)
+        console.log(similar_products)
+        const sc = document.getElementById('similar-container')
+        
+
+
+       
+
+        const similarratings = similar_products.map(p => {return p.id})
+        const rs = await getTwnetyRatings([product.product_id, ...similarratings])
+        if (rs && rs?.length > 0){
+            const rmp = rs.find(i => {return i.product_id == product.product_id})
+            const ss = handlestarcreation(Number(rmp?.average.substring(0,1)), 26)
+            document.getElementById('main-product-stars').innerHTML = `${ss}`
+            const ss2 = handlestarcreation(Number(rmp?.average.substring(0,1)))
+            document.getElementById('comment-stars').innerHTML = `${ss2}`
+        }
+
+        similar_products.forEach(p =>{
+            const similarproductsratings = rs.forEach(i => {
+                 if (i.product_id !== p.product_id) {
+                     p.rating = Number(i.average.substring(0,1));
+                 } 
+            })
+            
+            const pe = createSquaredProductElement(p)
+            sc.append(pe)
+        })
+
+        console.log('ratings')
+        console.log(rs)
+        handleBackButton()
+    }
+    
+
+
+    function addRating(p_id){
+        window.location.href = `rateproduct.html?&id=${p_id}`
+    }
+    let CURR_IMG = 1;
+function changeImage(n){
+    if ( n == CURR_IMG) return
+
+const a = document.getElementById(`option-image-${n}`)
+a.style.opacity = '100%'
+
+document.getElementById('main-image').src = a.src
+
+const b = document.getElementById(`option-image-${CURR_IMG}`)
+b.style.opacity = '40%'
+CURR_IMG = n
+}
+
+    main()
+
+    async function likeProduct(product_id){
+    const res = await fetch(`https://ggsrc.tech/lp?product_id=${product_id}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': TOKEN
+        }
+    })
+    if (res.status == 200) {
+        document.getElementById('unlike-button').style.display = 'unset'
+        document.getElementById('like-button').style.display = 'none'
+    } else if (res.status == 417) {
+        goToPlan()
+    }
+
+}
+async function unlikeProduct(product_id){
+    const res = await fetch(`https://ggsrc.tech/up?product_id=${product_id}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': TOKEN
+        }
+    })
+    if (res.status == 200) {
+        document.getElementById('unlike-button').style.display = 'none'
+        document.getElementById('like-button').style.display = 'unset'
+    }else if (res.status == 417) {
+        goToPlan()
+    }
+}
+
+
+    async function getProductById(id){
+        const res = await fetch(`https://ggsrc.tech/gsp?id=${id}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        },
+    })
+    if (res.status == 200){
+        const {product} = await res.json()
+        return product
+    } else {
+        const data = await res.json()
+        console.log('err')
+        console.log(data)
+        return null
+    }
+}
+
+async function getThreeSimilarProduct(id, color){
+            const res = await fetch(`https://ggsrc.tech/gtsp?id=${id}&color=${color}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        },
+    })
+    if (res.status == 200){
+        const {products} = await res.json()
+        return products
+    } else {
+        const data = await res.json()
+        console.log('err')
+        console.log(data)
+        return null
+    }
+}
+
+
+
+    async function getProductRatings(id){
+        const res = await fetch(`https://ggsrc.tech/gpr?id=${id}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        },
+    })
+    if (res.status == 200){
+        const {ratings} = await res.json()
+        return ratings
+    } else {
+        const data = await res.json()
+        console.log('err')
+        console.log(data)
+        return null
+    }
+}
+
+
+
+
+async function getMyUserInfo() {
+    const token = window.localStorage.getItem('token')
+    if (!token) {
+        window.location.href= '/signin.html'
+        return;
+    }
+    TOKEN = token;
+
+    const res = await fetch('https://ggsrc.tech/gui', {
+        method: 'GET',
+        headers: {
+            'Authorization': TOKEN
+        }
+    })
+    if (res.status == 200) {
+        const { name, url } = await res.json()
+            return { name, url }
+    } else if (res.status == 403) { 
+        window.location.href= '/a.html'
+    }
+
+
+        return null;
+}
+
+
+async function getMyLikes(){
+    const res = await fetch('https://ggsrc.tech/gl', {
+        method: 'GET',
+        headers: {
+            'Authorization': TOKEN
+        }
+    })
+    if (res.status == 200) {
+        const { likes } = await res.json()
+        return likes;
+    }
+    return null;
+}
+
+
+
+function handlestarcreation(r, sz) {
+    let stars = []
+    sz = sz || 14 
+    console.log
+    for (let i = 0; i <= 5; i++){
+        let s = document.createElement('span');
+        if (i < r) {
+            s.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="${sz}" height="${sz}" fill="var(--sec-color)" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                </svg>
+            `
+        } else {
+            s.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="${sz}" height="${sz}" fill="var(--sec-color)" class="bi bi-star" viewBox="0 0 16 16">
+  <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+</svg>
+            `
+        }
+        stars.push(s)
+    }
+
+    return `${stars[0].outerHTML} ${stars[1].outerHTML} ${stars[2].outerHTML} ${stars[3].outerHTML} ${stars[4].outerHTML}`;
+}
+
+
+function goToProduct(id) {
+  const pathAndQuery = window.location.pathname + window.location.search;
+  window.localStorage.setItem("before-product", pathAndQuery);
+  window.location.href = `product.html?id=${id}`;
+}
+
+function createSquaredProductElement(product) {
+    const productDiv = document.createElement("div");
+    productDiv.addEventListener('click', () => {goToProduct(product.id)})
+    //190px
+    productDiv.style = "width: 190px; height: fit-content;position: relative; padding: 0; ";
+    productDiv.id = `squared-product-${product.id}`
+
+    const flexible = product.flexible_sell.data[0] == 1 ? `
+    <div class="fsz-08 fw-6" style="position: absolute; top: 0px; left: -5px; transform: rotate(-12deg); background: var(--main-color); color: white; padding: 0 8px 0 8px; border-radius: 4px;" onclick="window.location.href = 'flexible.html'">Flexivel</div>
+    ` : ``
+
+
+    const stars = handlestarcreation(product.rating)
+    
+
+    const fretediv = document.createElement('div')
+    fretediv.style = product.delivery.data[0] == 1 ? '' : 'display: none;'
+    fretediv.innerHTML = `<p>teste</p>`
+    const frete = product.delivery.data[0] == 0 ? `
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#808080" class="bi bi-truck" viewBox="0 0 16 16">
+    <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+  </svg> 
+    Entrega
+    ` : ``
+
+
+    
+    //TODO: improve it, create only one element
+    const productButton = product.is_product_in_cart ? `
+        <button class="cart-animation" id="squared-product-cart-button-${product.id}" onClick="removeFromCart(${product.id})" style="background-color: white; padding: 4px 18px 4px 18px; border-radius: 0; border: 1px solid var(--main-color); color: var(--main-color); 
+        font-weight: 500; width: 100%;
+        transition: transform 0.15s ease;">Remove from Cart</button>
+    ` :
+    `
+    <button class="cart-animation" id="squared-product-cart-button-${product.id}" onClick="addToCart(${product.id})" style="background-color: var(--main-color); padding: 4px 18px 4px 18px; border-radius: 0; border: 1px solid var(--main-color); width: 100%; color: white; font-weight: 500; transition: transform 0.15s ease;"
+    >Add to Cart</button>
+        `
+        
+    //180px
+    productDiv.innerHTML = `
+   
+
+    <img style="width: 100%; height: 180px; " src="${product.url}" alt="${product.name}"
+    onclick="goToProduct(${product.id})"
+    >
+ 
+     
+      
+
+    <div class="f f-col" style="align-items: flex-start; justify-content: start; padding: 4px 2px 4px 2px; gap: 8px;">
+        <div class="f f-cntr" style="">
+        <div class="f" style="gap: 4px; align-items: center;" onclick="goToProduct(${product.id})">
+            ${stars}
+        </div>
+   
+    </div>
+    <div class="f f-col" style="width: 100%;" onclick="goToProduct(${product.id})">
+        <p class="fsz-11 fw-5 f f-cntr clr-white" style="color: gray;">${product.name}</p>
+       
+        <p class="fsz-09 fw-4 f f-cntr clr-white"  style="color: #808080; gap: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#808080" class="bi bi-cash" viewBox="0 0 16 16">
+        <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+        <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z"/>
+      </svg>
+        ${product.total_price}</p>
+
+        
+        <p class="fsz-08 f f-cntr"  style="color: #808080; gap: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#808080" class="bi bi-box-seam" viewBox="0 0 16 16">
+        <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+      </svg>
+        ${product.available_quantity.split('.')[0]} Kg</p>
+        
+        <p class="fsz-07 f f-cntr"  style="color: #808080; gap: 8px; text-decoration: line-through; text-decoration-color: red;">
+            ${frete}
+        </p>
+
+
+        <p class="fsz-07 fw-4 f f-cntr clr-white"  style="color: #808080; gap: 8px;">
+    
+        ${product.created_at}</p>
+
+
+        </div>
+      
+    </div>
+    `;
+    return productDiv;
+  }
+
+
+  function goToPlan(){
+    const pathAndQuery = window.location.pathname + window.location.search;
+    window.localStorage.setItem('before-plan', pathAndQuery)
+    window.location.href = 'plan.html'
+}
+    
+
+</script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+
+    <link rel="icon" href="./svg_logo.svg" type="image/svg">
+
+    <link rel="stylesheet" href="./global.css">
+</head>
+<body >
+    
+
+    <div style="width: 100vw; height: 100dvh;; overflow: hidden;">
+
+
+
+    <div id="account-created-main" style="align-items: center; gap: 10px; width: 100vw; height: 100dvh;;  position: relative;animation: slideToRight 0.25s ease-in-out forwards; background-color: var(--main-color);" class="f f-cntr f-col" >
+
+    
+
+        <button id="back-route-button" style="background-color: rgba(255, 255, 255, 0); width: fit-content; border: none; padding: 15px; position: absolute; top: 5px; right: 5px;" onclick="goToAnotherPage()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" strkeWidth="1.0" stroke="white"/>
+            </svg>
+        </button>
+
+        
+
+        
+        <div style=" width: 280px; gap: 16px;" class="f f-col f-cntr">
+            <img id="statusimg" src="./check.png"  style="width: 85px;" alt="">
+
+
+            <div style="gap: 8px; align-items: center;" class="f f-col">
+                <p id="title" class="fw-6 fsz-15" style="color: white;">Profile Updated!</p>
+                <p id="message" class="fw-4 fsz-12" style="color: white; text-align: center;">Changes May take Up to 1 Minute to get reflected due to Content-Caching</p>
+            </div>
+       
+        </div>
+
+    </div>
+
+</div>
+</body>
+
+<script defer>
+
+ 
+   
+
+
+
+
+    const url = new URL(window.location.href);
+
+
+ 
+    
+
+
+
+    function goToAnotherPage(){
+        document.getElementById('account-created-main').style.animation = 'disappearGoingToBottom 0.15s ease-in-out forwards'
+        setTimeout(() => {
+            window.location.href = `/profile.html`
+        }, 150);
+    }
+
+
+  
+
+
+
+ </script>
+</html>

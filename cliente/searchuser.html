@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Users</title>
+    <link rel="icon" href="./svg_logo.svg" type="image/svg">
+    <link rel="stylesheet" href="global.css">
+    
+
+    <style>
+        /* Styles for the user card */
+        .user-card {
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .user-image {
+            width: 120px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 10px;
+        }
+
+        .user-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .user-city {
+            color: #888;
+        }
+
+        .user-buttons {
+            margin-top: 20px;
+        }
+
+        .user-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            background-color: var(--main-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .user-button:last-child {
+            margin-right: 0;
+        }
+
+        .user-button:hover {
+            background-color: #0056b3;
+            background-color: #01d449;
+            background-color: #00862d;
+            
+        }
+
+    </style>
+
+</head>
+<body>
+  
+<div style="position: relative; margin: 0; height: fit-content;width: 100vw; overflow: hidden; min-height: 100dvh;; overflow: scroll;">
+
+
+        <header id="header" class="f" style=" height: 60px; width: 100vw; align-items: center; justify-content: space-between; background-color: white; top: 0;
+        position: fixed; z-index: 1; padding: 0 15px 0 15px; gap: 12px;
+    transform: translateY(-100%); animation: slideToBottom 0.15s ease-in-out forwards; animation-delay: 0.3s; transition: top 0.2s;
+    left: 0;
+    ">
+
+   <div class="f" id="go-back-button" style="align-items: center; padding: 10px;"> 
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#dbdbdb" class="bi bi-chevron-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" stroke="#dbdbdb" stroke-width=".4"/>
+    </svg>
+</div>
+
+    <div class="f f-cntr" style=" height: fit-content; gap: 12px;"> 
+            <img id="user-image" src="" style="background-color: #dbdbdb; border-radius: 50%; height: 35px; width: 35px;  transition: transform 0.15s ease;" alt="">
+    </div>
+    </header>
+
+    <div id="main-scrolled"
+    style="width: 100vw; height: 100dvh;; top: 0; 
+     position: absolute;
+      background-color: white; overflow-y: scroll;
+      animation: slideToTop 0.25s ease-in-out forwards;
+      background-color: white"
+    >
+
+
+    <form id="sidebar-user-form" class="f" style="margin: 70px auto 0 auto; height: 60px; background: white; overflow: hidden; border-radius: 10px; width: 90%; ">
+        <div class="f f-cntr" style="width: 60px; height: 100%;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#77777B" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" stroke="#77777B" stroke-width="0.1"/>
+              </svg>
+        </div>
+        <div style=" flex-grow: 1;overflow: hidden;"> 
+            <input style="background-color: unset; border: none; width: 100%; height: 100%; padding-left: 5px;" type="text" id="sidebar-friends-input" placeholder="Search Users...">
+        </div>
+
+
+        <button type="submit"  class="f f-cntr" style="height: 100%; width: 60px;padding: 0 15px 0 15px;  background: var(--main-color);" id="search-friends-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" stroke="white" stroke-width="1"/>
+              </svg>
+            </button>
+    </form>
+
+
+      <div id="user-cards-container-container" class="f f-col" style="padding: 10px 15px 4px 15px; width: 100%;flex-grow: 1;overflow-y: scroll;">
+        <div id="user-cards-container" class="f f-col" style="height: fit-content; width: 100%; gap: 8px; padding-bottom: 100px;">
+    </div>
+      </div>
+
+
+      </div>
+      
+    </div>
+
+</body>
+
+<script defer>
+    // gubn
+    let PACK = 1;
+    async function getusers(search) {
+    const res = await fetch(`https://ggsrc.tech/gusers?search=${search}&pack=${PACK}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        }
+    })
+    if (res.status == 200) {
+        const {users} = await res.json()
+        if (users.length < 20) {
+            SCROLL_END = 1
+        } else {
+            PACK++
+        }
+        return users;
+    } else {
+        const d = await res.json()
+        console.log(d)
+        return []
+    }
+
+}
+
+let SCROLL_END = 0
+async function FetchOnScrollEndOrNot(e, searchValue){
+    if (SCROLL_END == 1) return
+
+    const s = e.target.scrollTop + e.target.clientHeight === e.target.scrollHeight;
+    if (s) { 
+        const users = await getusers(searchValue)
+        if (users.length > 0){
+            const ucc = document.getElementById('user-cards-container')
+            users.forEach(user => ucc.append(createUserCardElement(user.id, user.name, user.user_image,searchValue)) )
+        }
+    }
+}
+
+
+function handleBackButton(){
+    const backbtn = document.getElementById('go-back-button')
+        backbtn.addEventListener('click', ()=> {
+        const r = window.localStorage.getItem('before-search-users')
+        if (r){
+            window.localStorage.removeItem('before-search-users')
+            window.location.href = r
+        } else {
+            window.history.back()
+        }
+    })
+}
+
+const main = async ()=>{
+
+    const searchParams = new URLSearchParams(window.location.search);
+
+    // Get the value of the "search" parameter
+    const searchValue = searchParams.get("search");
+
+    if (!searchValue) {
+
+
+    } else {
+
+    
+    }
+
+    const user = await getMyUserInfo()
+    const userHeaderImage = document.getElementById('user-image')
+    userHeaderImage.src = `${user.url}`
+
+
+
+
+    const users = await getusers(searchValue)
+
+    const ucc = document.getElementById('user-cards-container')
+    const uccc = document.getElementById('user-cards-container-container')
+    uccc.addEventListener('scroll', (e)=>FetchOnScrollEndOrNot(e, searchValue))
+
+    if (users.length > 0){
+        users.forEach(user => ucc.append(createUserCardElement(user.id, user.name, user.user_image, searchValue)) )
+    }
+
+    userHeaderImage.addEventListener('click', goToProfile)
+    
+    
+    const myForm = document.getElementById('sidebar-user-form');
+
+    document.getElementById('search-friends-button').addEventListener('click', reloadPageWithQuery)
+    myForm.addEventListener('submit', (e) => reloadPageWithQuery(e));
+    handleBackButton()
+
+}
+main()
+
+
+
+function reloadPageWithQuery(e){
+    if (e) e.preventDefault();
+    const v = document.getElementById('sidebar-friends-input').value
+    if (!v || v.trim() == '') return
+    window.location.href = `searchuser.html?search=${v.trim()}`
+}
+
+function goToUserPage(id){
+    const pathAndQuery = window.location.pathname + window.location.search;
+    window.localStorage.setItem('before-user', pathAndQuery)
+    window.location.href = `user.html?id=${id}`
+}
+function goToProfile(){
+    const pathAndQuery = window.location.pathname + window.location.search;
+    window.localStorage.setItem('before-profile', pathAndQuery)
+    window.location.href = 'profile.html'
+}
+async function getMyUserInfo() {
+    const token = window.localStorage.getItem('token')
+    if (!token) {
+        window.location.href= '/signin.html'
+        return;
+    }
+    TOKEN = token;
+
+    const res = await fetch('https://ggsrc.tech/gui', {
+        method: 'GET',
+        headers: {
+            'Authorization': TOKEN
+        }
+    })
+    if (res.status == 200) {
+        const { name, url } = await res.json()
+            return { name, url }
+    } else if (res.status == 403) { 
+        window.location.href= '/a.html'
+    }
+
+
+        return null;
+}
+function createUserCardElement(id, name, user_image, search){
+    
+
+    const paragraph = document.createElement("p");
+  paragraph.className = "fw-4 fsz-11";
+
+  // Split the name into parts before and after the search string
+  const parts = name.split(new RegExp(`(${search})`, "i"));
+
+  // Loop through the parts and create <span> elements for styling
+  parts.forEach((part, index) => {
+    const span = document.createElement("span");
+    span.textContent = part;
+    span.className = 'fw-4 fsz-10'
+    if (index % 2 === 1) {
+        // This is a matched part, style it as yellow
+        span.style.padding = '0 3px 0 3px'
+        span.style.margin = '0 1px 0 1px'
+        span.style.background = "var(--sec-color)";
+        span.style.color = 'white'
+    } else {
+      // This is not a matched part, style it as white
+      span.style.color = "#77777B";
+    }
+    paragraph.appendChild(span);
+  });
+
+    const div = document.createElement('div')
+    div.style = 'display: flex; background-color: #fff; border-radius: 10px; justify-content: start; padding: 4px; align-items: center; border: 1px solid whitesmoke; height: fit-content;'
+    div.addEventListener('click', () => goToUserPage(id))
+    div.innerHTML = `
+
+                
+                <img style="width: 60px; height: 60px;" class="rounded" src="${user_image}" alt="User Image" >
+             
+             
+                <div style="padding: 10px;">
+
+                    ${paragraph.outerHTML}
+
+                </div>
+    `
+    return div;
+
+//     <div style="margin-top: 8px; gap: 8px; height: fit-content;" class="f">
+
+// <a href="#" style="background-color: white; color: var(--main-color); border: none; border-radius: 5px; padding: 5px 10px; text-decoration: none; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#0056b3';" onmouseout="this.style.backgroundColor='#007BFF'; height: fit-content;" class="fw-6 fsz-09">View</a>
+
+
+// <a href="${`socker.html?contact_id=${id}&contact_name=${name}`}" style="background-color: var(--main-color); color: #fff; border: none; border-radius: 5px; padding: 5px 20px; text-decoration: none; transition: background-color 0.3s;" class="fw-6 fsz-09">Message</a>
+// </div>
+}
+</script>
+</html>
+
+

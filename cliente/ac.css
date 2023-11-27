@@ -1,0 +1,40 @@
+body{
+    background-color: white;
+    
+}
+
+input::placeholder{
+    color: rgb(169, 169, 169);
+    font-weight: 500;
+    font-size: 1.1em;
+}
+/* ##0DF5E3
+#38304C
+*/
+
+#custom-google-button {
+display: inline-flex;
+align-items: center;
+width: 100%;
+height: 100%;
+background-color: white; /* White background */
+color: #b0b0b0; /* Text color */
+
+
+cursor: pointer;
+}
+
+.google-icon {
+width: 28px;
+height: 28px;
+background-image: url('https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg'); /* Google icon URL */
+background-size: cover;
+}
+
+.google-text {
+font-family: 'Roboto', sans-serif;
+font-weight: bold;
+}
+#custom-google-button:hover {
+background-color: #f4f4f4; /* Slightly darker blue on hover */
+}

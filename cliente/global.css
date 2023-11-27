@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+
+:root{
+    /* --main-color: #62A404;
+    
+    --main-color: #1CAD1F;
+    --main-color: #2AA952;
+     */
+     --main-color: #0981EE;
+     --main-color: #01d449;
+    --sec-color: #DB3022;
+    --sec-color: #FB5506;
+    --sec-color: #FABD15;
+    --sec-color: #007BFF;
+    --sec-color: #FC9620;
+
+    --test: #3cf77b;
+
+    /* 
+    --main-color: #85AA06;
+    --second-color: #FFAF04; */
+
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  user-select: none;
+}
+
+
+p, h1, h2, h3, h4, h5, h6{
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+    margin: 0;
+}
+
+textarea{
+    resize: none;
+}
+input{
+    outline: none;
+}
+
+button{
+    border: none;
+}
+
+
+button::after{
+    background-color: cyan;
+}
+/* button:: */
+
+.spinner, .small-spinner, .big-spinner, .thin-spinner{
+    width: 25px;
+    height: 25px;
+    border: 3px solid white; /* Green border */
+    border-top: 3px solid var(--main-color); /* Transparent top border to create the spinner effect */
+    border-right: 3px solid transparent; /* Transparent top border to create the spinner effect */
+    border-bottom: 3px solid transparent; /* Transparent top border to create the spinner effect */
+    border-radius: 50%; /* Create a circle */
+    animation: spin .3s linear infinite; /* Animation properties */
+}
+
+.big-spinner{
+    width: 35px;
+    height: 35px;
+}
+
+
+.thin-spinner{
+    border: 2px solid #2AA952;
+    border-top: 2px solid transparent;
+}
+
+.small-spinner{
+    width: 20px;
+    height: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes disapearAndApear {
+    0% { opacity: 0%; }
+    100% { opacity: 100% }
+}
+
+
+
+
+
+
+
+
+
+/* global generalized helper styles */
+.f{
+    display: flex;
+}
+
+.f-cntr{
+    justify-content: center;
+    align-items: center;
+}
+
+.f-col{
+    flex-direction: column;
+}
+
+.rounded{
+    border-radius: 50%;
+}
+
+.fw-2{ font-weight: 200;} .fw-3{ font-weight: 300;} .fw-4{ font-weight: 400;} .fw-5{ font-weight: 500;} .fw-6{ font-weight: 600;}  .fw-7{ font-weight: 700;}  .fw-8{ font-weight: 800;} .fw-9{ font-weight: 900;}
+
+.fsz-07{font-size: 0.7em } .fsz-08{font-size: 0.8em } .fsz-09{font-size: 0.9em } .fsz-10{font-size: 1.0em }
+.fsz-11{ font-size: 1.1em } .fsz-12{ font-size: 1.2em } .fsz-13{  font-size: 1.3em } .fsz-14{  font-size: 1.4em } .fsz-15{  font-size: 1.5em } .fsz-16{  font-size: 1.6em } .fsz-17{  font-size: 1.7em }  .fsz-18{  font-size: 1.8em } .fsz-19{  font-size: 1.9em } .fsz-20{  font-size: 2.0em} .fsz-22{  font-size: 2.2em} .fsz-24{  font-size: 2.4em}
+.bg-main{ background-color: var(--main-color); } .bg-second{ background-color: var(--second-color); } .bg-white{ background-color: white;}
+.clr-white{ color: white;} .clr-main{ color: var(--main-color);}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* animations */
+@keyframes slideToRight {
+    0% {
+        transform: translateX(100%); /* Start position */
+    }
+    100% {
+        transform: translateX(0%); /* End position, slides in from left to right */
+    }
+  }
+  @keyframes slideToLeft {
+    0% {
+        transform: translateX(-100%); /* Start position */
+    }
+    100% {
+        transform: translateX(0%); /* End position, slides in from left to right */
+    }
+  }
+  @keyframes slideToBottom {
+    0% {
+        transform: translateY(-100%); 
+    }
+    100% {
+        transform: translateY(0%); /* End position, slides in from left to right */
+    }
+  }
+  @keyframes slideToTop {
+    0% {
+        transform: translateY(100%); 
+    }
+    100% {
+        transform: translateY(0%); /* End position, slides in from left to right */
+    }
+  }
+
+
+  @keyframes disappearGoingToBottom{ /* From screen visible state */
+    0% {
+        transform: translateY(0%); 
+    }
+    100% {
+        transform: translateY(100%); /* End position, slides in from left to right */
+    }
+  }
+
+  @keyframes sidebaropen{
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 0;
+    }
+  }
+
+
+
+
+
+  ::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+/* footer */
+
+.bottom-menu{
+    height: 70px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 100vw;
+    background-color: white;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 2;
+    box-shadow: 2px 2px 16px 16px rgba(0, 0, 0, 0.137);
+}
+.menu-item{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: #B9B9B9;
+    gap: 5px;
+    width: 100%;
+    height: 100%;
+}
+.menu-item-text{
+    font-size: .7em;
+    font-weight: 400;
+    text-align: center;
+}
+
+
+
+.like-animation.clicked {
+    transform: scale(0.4);
+  }
+          .cart-animation.clicked {
+    transform: scale(1.1);
+  }
+  
+  #user-image.clicked{
+      transform: scale(0.9);
+  }
+
+
+
+
+  /* sidebar */
+
+    /* sidebar */
+    #sidebar-friends-input::placeholder{
+        color: #77777B;
+        font-size: 1.1em;
+        font-weight: 500;
+      }
+      
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;;
+    width: 250px;
+    background-color: #ffffff;
+    border-right: 1px solid #e6e6e6;
+  }
+  
+  .user-info {
+    padding: 5px 0 60px 0;
+    text-align: center;
+  }
+  
+  .user-info  {
+    width: 100%;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+  .user-info {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+  
+  .user-info {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #777777;
+  }
+  
+  .sidebar {
+    margin-top: 20px;
+  }
+  
+  .sidebar  {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar{
+    margin-bottom: 10px;
+  }
+  
+  .sidebar {
+    text-decoration: none;
+    color: #333333;
+  }
+  
+  .sidebar  {
+    color: #000000;
+  }
+  
+  .sidebar  {
+    font-size: 20px;
+
+  }
+  
+  .sidebar  {
+    font-size: 16px;
+  }
+
+
+  li{
+    text-decoration: none;
+    list-style: none;
+  }

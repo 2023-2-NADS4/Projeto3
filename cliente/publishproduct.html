@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publish</title>
+
+    <link rel="icon" href="./svg_logo.svg" type="image/svg">
+    <link rel="stylesheet" href="global.css">
+
+<style>
+     #product-name-input{
+      min-width: 15px; /* Set a minimum width to prevent it from becoming too narrow */
+      width: 15px;
+      font-size: 1.1em;
+      transition: width 0.15s;    
+      border: none;
+    }
+
+    #hiddenTextWidth {
+        margin: auto;
+      visibility: hidden;
+      width: fit-content;
+      background-color: red;
+      white-space: nowrap;
+    }
+
+    button:disabled{
+
+}
+
+
+
+/* toggle */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--main-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--main-color);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+</style>
+   
+</head>
+<body>
+    
+    <!-- <div style="position: absolute; top: 30px; right: 30px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#DBDBDB" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+        </svg>
+    </div> -->
+
+    <div class="f f-col" style="width: 100%; height: 100dvh;; overflow: hidden; background-color: white;
+            transform: translateY(-100%); 
+    animation: slideToTop 0.25s ease-in-out forwards;
+    ">
+
+
+
+        <div class="f" id="all-numbered-container-parent" style="flex-grow: 1; width: 700%; background-color: white; overflow: hidden; ">
+
+
+
+
+            
+            <div id="zero-container" style="width: 100%; overflow: hidden; flex-grow: 1; height: 100dvh;; align-items: center; justify-content: center; gap: 32px; background-color: white; padding-top: 35px;" class="f f-col">
+
+       
+               <img src="./house.png"  style="width: 360px;" alt="">
+         
+
+         
+
+                <div style="width: 100%; height: fit-content; gap: 8px;" class="f f-cntr f-col">
+                
+                    <p class="fsz-09 fw-6" style="width: 80%; color: rgb(168, 168, 168); text-align: center;">
+                        
+                        Here you can turn your Organic Products visible to other users in the Platform.</p>
+                </div>
+               
+
+                <div class="f f-cntr f-col" style="width: 100%; gap: 10px;">
+
+                    <button onclick="window.history.back() || `${window.location.href} = 'main.hmtl'`" class="fsz-11 fw-5 f f-cntr" style="background:rgba(255, 255, 255, 0); color: var(--main-color); height: 50px;
+                width: 50%; 
+                ">Cancelar
+            
+            </button>
+
+                    <button id="0-continue-button" class="fsz-11 fw-6 f f-cntr" style="background: var(--main-color); color: white; height: 55px;
+                 width: 80%; border: 1px solid var(--main-color);
+                ">Próximo
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                </svg>
+            </button>
+            </div>
+
+  
+            </div>
+
+
+
+        <div id="first-container" style="background-color: white; height: 100dvh;; overflow: hidden; width: 100%; transform: translateX(-0%); transition: 0.2s ease-in-out; justify-content: center; align-items: center;" class="f f-col">
+
+        
+            <!-- <img src="./step2 (2).png"  style="position: absolute; right: 0; top: 15px; width: 450px;" alt=""> -->
+            <!-- <div style="width: 250px; overflow: hidden; ">
+
+                <img src="./fruits.png" id="trator" style="width: 250px;" alt="">
+            </div> -->
+            <!-- <img src="./trator.png"  style="width: 350px; position: absolute; inset: 0 0 0 0; margin: auto;"  alt=""> -->
+            <div style="height: fit-content; width: 100%; gap: 32px;" class="f f-col f-cntr">
+                <h1 class="fw-6 fsz-16" style="color: rgb(145, 145, 145); text-align: center; width: 80%;">Qual o Nome do seu Produto?</h1>
+        <div class="f f-col">
+            <div id="hiddenTextWidth" style="height: 45px;"></div>
+            <input type="text"  id="product-name-input" style="font-size: 1.5em; margin: auto; background-color: rgba(245, 222, 179, 0); color: rgb(145, 145, 145);" class="fw-5">
+        </div>
+
+        <div class="f f-col f-cntr" style="width: 100%; gap: 16px;">
+
+            <button onclick="goBack(0)" class="fsz-11 fw-5 f f-cntr" style="background:#e4a72c00; color: var(--main-color); height: 50px;
+            width: 50%; 
+            ">Anterior
+        
+        </button>
+
+        <button 
+        disabled="true"
+         id="1st-continue-button" class="fsz-11 fw-6 f f-cntr" style="background: var(--main-color); color: white; height: 55px; 
+        width: 80%; border: 1px solid var(--main-color); 
+        ">Continuar
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="white" class="bi bi-arrow-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" stroke="white" strokeWidth="1.5"/>
+          </svg>
+        </button>
+        </div>
+
+    </div>
+    </div>
+
+    <div id="second-container" style="background-color: white; height: 100dvh;; overflow: hidden; width: 100%; transform: translateX(-0%); transition: 0.2s ease-in-out; align-items: center; justify-content: center;" class="f f-col">
+
+        <!-- <img src="./step33.png"  style="position: absolute; right: 0; top: 15px; width: 450px;" alt=""> -->
+
+        <div style="height: fit-content; width: 80%; padding: 30px 15px 0 15px; justify-content: center; align-items: center;  gap: 16px;" class="f f-col">
+
+            <div id="main-image" src="" style="height: 280px; width: 280px; background-size: cover;">
+                <img id="up-img-df" src="https://img.freepik.com/premium-vector/vector-flat-design-characters-photographer-take-picture_444663-2178.jpg?w=2000" style="width: 220px; opacity: 40%" alt="">
+            </div>
+
+            <button onclick="goBack(1)" class="fsz-11 fw-5 f f-cntr" style="background:rgba(255, 255, 255, 0); color: var(--main-color); height: 50px;
+            width: 250px; 
+            ">Anterior
+        </button>
+     
+        <div style="width: 200px; height: 200px;position: relative; width: 250px; height: 55px; background-color: red;">
+            <input type="file" accept="image" id="imageInput" multiple style="width: 70%; height: 55px; position: absolute; inset: 0 0 0 0; margin: auto; z-index: 1; opacity: 0%;">
+            <button  class="fsz-11 fw-6 f f-cntr" style="background: var(--main-color); color: white; height: 55px;
+            width: 250px; border: 1px solid var(--main-color);  position: absolute; inset: 0 0 0 0; margin: auto;
+           ">Upload
+
+       </button>
+        </div>
+
+        
+
+
+        <div class="f f-cntr" style=" width: 100%; overflow: scroll; height: fit-content;">
+
+            <div style="height: fit-content; width: fit-content; gap: 8px; align-items: flex-start; justify-content: flex-start;" class="f">
+                <div id="image-slot-0" style="display: none; width: 60px; height: 60px; background-size: cover; border-radius: 5px;"></div>
+                <div id="image-slot-1" style="display: none; width: 60px; height: 60px; background-size: cover; border-radius: 5px;"></div>
+                <div id="image-slot-2" style="display: none; width: 60px; height: 60px; background-size: cover; border-radius: 5px;"></div>
+                <div id="image-slot-3" style="display: none; width: 60px; height: 60px; background-size: cover; border-radius: 5px;"></div>
+                <div id="image-slot-4" style="display: none; width: 60px; height: 60px; background-size: cover; border-radius: 5px;"></div>
+                <div id="image-slot-5" style="display: none; width: 60px; height: 60px; background-size: cover; border-radius: 5px;"></div>
+                <div id="image-slot-6" style="display: none; width: 60px; height: 60px; background-size: cover; border-radius: 5px;"></div>
+
+            
+            
+            </div>
+        </div>
+
+
+        <div class="f f-col f-cntr" style="width: 100%; gap: 8px;">
+
+      
+
+        <button 
+        disabled="true"
+         id="2nd-continue-button" class="fsz-11 fw-6 f f-cntr" style=" display: none; background: var(--main-color); color: white; height: 55px;
+        width: 100%; border: 1px solid var(--main-color); 
+        ">Proxímo
+        
+        </button>
+        </div>
+
+
+      
+
+
+    </div>
+    </div>
+
+        <div id="third-container" style="background-color: white; height: 100dvh;; overflow: hidden; width: 100%; transform: translateX(-0%); transition: 0.2s ease-in-out;" class="f f-cntr f-col">
+
+            <div style="height: 100%; width: 100%; padding: 15px; gap: 24px; overflow: scroll;" class="f f-col">
+
+   
+        <!-- <img src="./step2 (2).png"  style="position: absolute; right: 0; top: 15px; width: 450px;" alt=""> -->
+ 
+
+
+
+        <div class="f f-col" style="width: 100%; gap: 8px;">
+                <label>Descrição:</label>
+                <p class="fsz-08">Descreva seu Produto de forma breve (E.g disponibilidade, Época do plantio, coleta, etc.)</p>
+            <textarea style="padding: 10px 0 0 5px; width: 100%; background-color: #efefef; border: none; border-radius: 15px;"
+            name="" cols="30" rows="5" id="product-description-input"></textarea>
+
+        </div>
+
+
+
+        <!-- <div class="f" style="width: 100%; gap: 8px;"> -->
+
+            <div class="f f-col" style="width: 100%; gap: 8px;">
+                <label>Quantidade (KG):</label>
+                <p class="fsz-08">Quantidade disponivel para venda de seu Produto. Sendo o valor minimo de 1kg e o maximo 2000kg.</p>
+                <input style="padding-left: 10px; height: 45px; border: none; border-radius: 10px; background-color: #efefef; width: 100%; " type="number" placeholder="" id="product-amount-input">
+            </div>
+
+            <div class="f f-col" style="width: 100%; gap: 8px;">
+                <label>Preço:</label>
+                <p class="fsz-08">Selecione o preço TOTAL do seu Produto para a quantidade selecionada ao lado.</p>
+                <input style="padding-left: 10px; height: 45px; border: none; border-radius: 10px; background-color: #efefef; width: 100%; "
+                type="number" placeholder="" id="product-price-input" >
+            </div>
+        <!-- </div> -->
+
+            <div class="f f-col" style="gap: 8px;">
+                <label for="">Entrega:</label>
+                <p class="fsz-08">Marque essa opção se voce gerencia a entrega deste produto. Dessa forma usuarios poderão ter conhecimento disso antes de conversarem com voce.</p>
+          <label class="switch">
+            <input id="entrega-switch" type="checkbox">
+            <span class="slider round"></span>
+            </label>
+            </div>
+
+            <div class="f f-col" style="gap: 8px;">
+                <label for="">Flexibilidade:</label>
+                <p class="fsz-08">Marque essa opção se voce esta disposto a vender seu produto em quantidades menores do que a definida acima.</p>
+          <label class="switch">
+            <input id="flexible-switch" type="checkbox">
+            <span class="slider round"></span>
+            </label>
+            </div>
+
+            <div class="f f-cntr f-col" style="width: 100%; gap: 10px;">
+                <button onclick="goBack(2)" class="fsz-11 fw-5 f f-cntr" style="background:rgba(255, 255, 255, 0); color: var(--main-color); height: 50px;
+            width: 50%; 
+            ">Voltar
+        </button>
+        <button 
+        disabled="true"
+         id="3rd-continue-button" class="fsz-11 fw-6 f f-cntr" style="background: var(--main-color); color: white; height: 50px; border-radius: 15px;
+        width: 80%; border: 1px solid var(--main-color); 
+        ">Próximo
+        </button>
+    </div>
+
+<!--             
+            <div class="f f-col">
+                <label  for="">Alavancar <span class="fsz-08">(Apenas para membros Premium)</span>:</label>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+            </label>
+            </div> -->
+
+
+    </div>
+
+ 
+    </div>
+
+    <div id="third-and-a-half-container" style="background-color: white; height: 100dvh;; overflow: hidden; width: 100%; transform: translateX(-0%); transition: 0.2s ease-in-out;" class="f f-cntr">
+
+
+        <div style="width: 100%; align-items: center; height: 100%; overflow: scroll; justify-content: center; padding: 20px;" class="f f-col" >
+
+      
+            <!-- 01d449 -->
+            <p class="fsz-09" style="border: 1px solid var(--main-color); border-radius: 15px; padding: 10px; background-color: #2ada6530;">Please, fill The options bellow according to your product so you can help us recommending content based products.</p>
+
+
+            <div class="f f-col">
+                <label  for="">Tamanho Unitario:</label>
+                <select id="s-size" style="height: 45px;">
+                    <option value="S">Small (E.g Uvas, Cerejas, Amoras)</option>
+                    <option value="M">Medium (E.g. Laranjas, Tomates)</option>
+                    <option value="B">Large (E.g. Abacaxis, Melancias)</option>
+                </select>
+            </div>
+
+             <div class="f">
+
+            <div class="f f-col">
+                <label for="">Coloração:</label>
+                <select id="s-color">
+                    <option value="Red">Red</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Yellow">Yellow</option>
+                    <option value="Green">Green</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Purple">Purple</option>
+                    <option value="Pink">Pink</option>
+                    <option value="Brown">Brown</option>
+                    <option value="White">White</option>
+                    <option value="Black">Black</option>
+                </select>
+            </div>
+     
+            <div class="f f-col">
+            <label for="">Sabor:</label>
+        <select id="s-taste">
+            <option value="Sweety">Doce</option>
+            <option value="Citric">Citrico</option>
+            <option value="Soury">Azedo</option>
+            <option value="Savory">Salgado</option>
+            <option value="Bitter">Amargo</option>
+            <option value="Spicy">Spicy</option>
+            <option value="Earthy">Earthy</option>
+            <option value="Grassy/Leafy">Grassy/Leafy</option>
+            <option value="Nutty">Nutty</option>
+          </select>
+        </div>
+    </div> 
+    
+
+    
+    <div class="f f-cntr f-col" style="width: 100%; gap: 10px;">
+    <button onclick="goBack(3)" class="fsz-11 fw-5 f f-cntr" style="background:rgba(255, 255, 255, 0); color: var(--main-color); height: 50px;
+    width: 80%; 
+    ">Voltar
+</button>
+    <button 
+    disabled="true"
+     id="3rd-and-half-continue-button" class="fsz-11 fw-6 f f-cntr" style="background: var(--main-color); color: white; height: 50px; border-radius: 15px;
+    width: 80%; border: 1px solid var(--main-color);
+    ">Publicar
+    
+    </button>
+</div>
+</div>
+
+     
+        <!-- <h1>Fourth</h1> -->
+
+       
+    </div>
+
+
+    <div id="fourth-container" style="background-color: var(--sec-color); height: 100dvh;; overflow: hidden; width: 100%; transform: translateX(-0%); transition: 0.2s ease-in-out;" class="f f-cntr">
+
+
+        <div class="spinner big-spinner"></div>
+     
+        <!-- <h1>Fourth</h1> -->
+
+       
+    </div>
+
+    <div id="fifth-container" style="background-color: white; height: 100dvh;; overflow: hidden; width: 100%; transform: translateX(-0%); transition: 0.2s ease-in-out; gap: 32px; align-items: center; justify-content: center;" class="f f-col">
+
+
+        <!-- <div style="width: 100%; align-items: center; gap: 10px;" class="f f-col" >
+            <h1 style="color: #0662B5; text-align: center; width: fit-content;" class="fw-7">Success</h1>
+            <h2 style="color: var(--main-color);  text-align: center; width: fit-content;" class="fsz-11 fw-4">Your Product has been successfully published!</h2>
+        </div>
+        <img src="./created.png" style="width: 260px; " alt="">
+
+        <div class="f f-cntr f-col" style="width: 100%; gap: 0px;">
+
+            <button onclick="window.history.back() || `${window.location.href = 'main.html'}`" class="fsz-11 fw-5 f f-cntr" style="margin-top: 10px; background:white; color: var(--main-color); height: 50px;
+        width: 50%; 
+        ">Voltar
+    
+    </button>
+
+            <button id="0-continue-button" class="fsz-11 fw-6 f f-cntr" style="margin-top: 10px; background: #0981EE; color: white; height: 55px;
+         width: 80%; border: 1px solid #0981EE;  border-radius: 15px;
+        ">Meus Produtos
+        
+    </button>
+    </div>
+      -->
+
+      
+      <div id="f-product-created-main" style="align-items: center; gap: 10px; width: 100vw; height: 100dvh;;  position: relative;animation: slideToRight 0.25s ease-in-out forwards; background-color: var(--main-color);" class="f f-cntr f-col" >
+
+    
+
+        <button id="go-back-button" style="background-color: rgba(255, 255, 255, 0); width: fit-content; border: none; padding: 15px; position: absolute; top: 5px; right: 5px;" onclick="goToAnotherPage()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" strkeWidth="1.0" stroke="white"/>
+            </svg>
+        </button>
+
+        
+
+        
+        <div style=" width: 280px; gap: 16px;" class="f f-col f-cntr">
+            <img id="f-statusimg" src="./check.png"  style="width: 85px;" alt="">
+
+
+            <div style="gap: 8px; align-items: center;" class="f f-col">
+                <p id="f-title" class="fw-6 fsz-15" style="color: white;">Product Published!</p>
+                <p id="f-message" class="fw-4 fsz-12" style="color: white; text-align: center;">Congratulations! Your Product has been Sucessfully Published.</p>
+            </div>
+       
+        </div>
+
+    </div>
+
+       
+    </div>
+
+</div>
+
+    
+    </div>
+
+</body>
+</html>
+
+
+<script defer>
+
+
+
+    const TOKEN = window.localStorage.getItem('token')
+    if(!TOKEN){
+        window.location.href = 'signin.html?comming_from_route=publishproduct'
+    }
+
+    const nameInput = document.getElementById('product-name-input')
+    const hiddenTextWidth = document.getElementById('hiddenTextWidth')
+
+
+    nameInput.addEventListener('input', updateInputWidth);
+
+    handleGoBack()
+
+//     nameInput.addEventListener('input', function() {
+//   // Calculate the width needed based on the input's content
+//   let inputTextWidth // Adjust the multiplier for desired spacing
+
+//   if (this.value.length > 6){
+//     inputTextWidth = this.value.length * 7;
+//   } else {
+//     inputTextWidth = this.value.length * 10;
+//   }
+  
+//   // Set the input's width to accommodate the content
+//   this.style.width = inputTextWidth + 'px';
+// });
+
+const zeroContainueButton = document.getElementById('0-continue-button')
+const firstContainer = document.getElementById('first-container')
+const zeroContainer = document.getElementById('zero-container')
+zeroContainueButton.addEventListener('click', ()=>{
+    setTimeout(() => {
+        nameInput.focus()
+    }, 200);
+    // document.getElementById('one-ball').innerText = ''
+    // document.getElementById('one-bar').style.background = 'var(--main-color)'
+    firstContainer.style.transform = 'translateX(-100%)'
+})
+
+const firstContinueButton = document.getElementById('1st-continue-button')
+const secondContainer = document.getElementById('second-container')
+firstContinueButton.addEventListener('click',()=>{
+    console.log('clicked')
+    secondContainer.style.transform = 'translateX(-200%)'
+})
+function updateInputWidth() {
+
+    if (this.value.length > 3 ){
+        firstContinueButton.disabled = false
+    } else {
+        firstContinueButton.disabled = true
+    }
+  // Copy input value to hidden div and get its width
+  hiddenTextWidth.textContent = nameInput.value;
+  const textWidth = hiddenTextWidth.offsetWidth;
+  
+  // Set the input's width to accommodate the content
+  nameInput.style.width = (textWidth + 26) + 'px'; // Adjust the spacing as needed
+}
+
+
+            // Get references to the HTML elements
+            const imageInput = document.getElementById('imageInput');
+        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+  
+
+
+
+
+        const thirdContainer = document.getElementById('third-container')
+   const secondContinueButton = document.getElementById('2nd-continue-button')
+   secondContinueButton.addEventListener('click',()=>{
+
+    thirdContainer.style.transform = 'translateX(-300%)'
+})
+
+
+
+let URLS_LENGTH = 0;
+        imageInput.addEventListener('change', function () {
+    const files = this.files; // Get the selected files
+
+    // Check if at least one file was selected and no more than three
+    const maindiv = document.getElementById('main-image')
+    if (files.length > 0 && files.length <= 7) {
+        document.getElementById('up-img-df').remove()
+
+        for (let i = 0; i < files.length; i++) {
+            // Check if the file type is JPG
+            if (files[i].type.split('/')[0] === 'image') {
+                // Create a FileReader to read the selected file
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    if (i == 0){
+                        maindiv.style.visibility = 'unset';
+                        maindiv.style.backgroundImage = `url('${e.target.result}')`;
+                    }
+
+                    const imageSlotHTML = document.getElementById(`image-slot-${i}`);
+                    imageSlotHTML.style.display = 'unset'
+                    imageSlotHTML.style.backgroundImage = `url('${e.target.result}')`;
+                    imageSlotHTML.addEventListener('click', (e) =>{ // change main image
+                        maindiv.style.backgroundImage = imageSlotHTML.style.backgroundImage
+                    })
+                };
+                
+                reader.readAsDataURL(files[i]);
+                secondContinueButton.disabled = false;
+                secondContinueButton.style.display = 'unset';
+                // Read the selected file as a data URL (base64 encoded)
+            }
+        }
+        URLS_LENGTH = files.length
+    } else {
+        for (let i = 0; i < 6; i++) {
+            document.getElementById(`image-slot-${i}`).style.display = 'none';
+        }
+        maindiv.style.visibility = 'hidden'
+        secondContinueButton.disabled = true;
+        secondContinueButton.style.display = 'none';
+        // alert('Please select between 1 and 3 JPG images.');
+    }
+});
+
+function validateThirdContainer(){
+    console.log(descriptionInput.value.length > 20)
+    console.log(Number(amountInput) > 0)
+    console.log(Number(amountInput) < 2000)
+    console.log(Number(priceInput) > 0)
+    console.log(Number(priceInput) > 0)
+    if (!amountInput.value || !priceInput.value || !descriptionInput.value) {
+        thirdContinueButton.disabled = true;
+        return
+    }
+
+    if (descriptionInput.value.length > 20 && Number(amountInput.value) > 0 && Number(amountInput.value) < 2000 && Number(priceInput.value) > 0 && Number(priceInput.value) < 99999)
+        {
+        thirdContinueButton.disabled = false;
+    } else {
+        thirdContinueButton.disabled = true;
+    }
+}
+
+
+const thirdContinueButton = document.getElementById('3rd-continue-button')
+const descriptionInput = document.getElementById('product-description-input')
+const amountInput = document.getElementById('product-amount-input')
+const priceInput = document.getElementById('product-price-input')
+
+
+descriptionInput.addEventListener('input', validateThirdContainer)
+amountInput.addEventListener('input', validateThirdContainer)
+priceInput.addEventListener('input', validateThirdContainer)
+
+
+
+const fourthContainer = document.getElementById('fourth-container')
+const fifthContainer = document.getElementById('fifth-container')
+
+
+const thirdhalfbutton = document.getElementById('3rd-and-half-continue-button')
+const thirdHalfContainer = document.getElementById('third-and-a-half-container')
+thirdContinueButton.addEventListener('click', async (e)=>{
+    thirdHalfContainer.style.transform = 'translateX(-400%)'
+    thirdhalfbutton.disabled = false;
+})
+
+
+
+
+thirdhalfbutton.addEventListener('click', async (e)=>{
+    fourthContainer.style.transform = 'translateX(-500%)'
+        
+        const urls = await getPreSignedURL()
+        if (urls?.length > 0){
+            const error = await usePreSignedUrl(urls)
+            if (!error){
+                await createProduct(urls)
+            }
+        }
+  
+})
+
+async function getPreSignedURL(){
+    const res = await fetch(`https://ggsrc.tech/gurl?contentType=jpg&urls_number=${URLS_LENGTH}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': TOKEN
+        }
+    })
+    if (res.status == 200) {
+        const {urls} = await res.json()
+        return urls
+    } else {
+        handleContainerError('Unable to get S3 preSigned URLS. Please, Try Again')
+        return null;
+    }
+    return null;
+}
+
+async function usePreSignedUrl(urls){
+    successfulResults = []
+    failedResults = []
+
+    const promises = urls.map(async(url, i) =>{
+
+        const res = await fetch(url.url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'image/jpg'
+            },
+            body: imageInput.files[i]
+        })
+        if (res.status == 200) {
+            // successfulResults.push();
+        } else {
+            failedResults.push(1);
+        }
+    })
+
+    await Promise.all(promises);
+
+    
+    if (failedResults.length > 0){
+        handleContainerError('Unable to Use S3 preSigned URLS. Please, Try Again')
+        return true;
+    } else {
+        return null;
+    }
+}
+
+async function createProduct(urls){
+
+    const keys = urls.map(url => {return url.key})
+  
+    const  c = document.getElementById('s-color')
+    const s = document.getElementById('s-size')
+    const t = document.getElementById('s-taste')
+    const f = document.getElementById('flexible-switch')
+    const e = document.getElementById('entrega-switch')
+  
+        const data = {
+            server_file_names : keys,
+            name: nameInput.value,
+            description: descriptionInput.value,
+            total_price: Number(priceInput.value),
+            available_quantity: Number(amountInput.value),
+            size: s.value,
+            color: c.value,
+            taste: t.value,
+            flexible_sell: f.checked ? 1 : 0,
+            delivery: e.checked ? 1 : 0,
+            boost: 0,
+        }
+
+
+    const res = await fetch('https://ggsrc.tech/cp', {
+        method: 'POST',
+        headers: {
+            'Authorization': TOKEN,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    console.log(res.status)
+    if (res.status == 200) {
+        handleContainerSucess()
+    } else if (res.status == 417){
+        goToPlan()
+    } else {
+        const {error} = await res.json()
+        handleContainerError(error)
+    }
+}
+
+
+function goBack(n){
+    zeroContainer.style.transform = 'translateX(0%)'
+    if ( n == 0){
+        firstContainer.style.transform = 'translateX(0%)'
+    } else if (n == 1){
+        firstContainer.style.transform = 'translateX(-100%)'
+        secondContainer.style.transform = 'translateX(0%)'
+    } else if (n == 2){
+        secondContainer.style.transform = 'translateX(-200%)'
+        thirdContainer.style.transform = 'translateX(0%)'
+    } else if (n == 3){
+        thirdContainer.style.transform = 'translateX(-300%)'
+        thirdHalfContainer.style.transform = 'translateX(0%)'
+    } 
+    
+}
+
+
+
+
+
+function goToPlan(){
+    const pathAndQuery = window.location.pathname + window.location.search;
+    window.localStorage.setItem('before-plan', pathAndQuery)
+    window.location.href = 'plan.html'
+}
+
+function handleGoBack(){
+        const backbtn = document.getElementById('go-back-button')
+        backbtn.addEventListener('click', goBack)
+}
+function goBack(){
+        const r = window.localStorage.getItem('before-create-product')
+            if (r){
+                window.localStorage.removeItem('before-create-product')
+                window.location.href = r
+            } else {
+                window.history.back()
+            }
+    }
+
+function handleContainerError(e){
+    document.getElementById('f-product-created-main').style.background = 'var(--sec-color)'
+    document.getElementById('f-statusimg').src = './x.png'
+    document.getElementById('f-title').innerText = 'Error'
+    document.getElementById('f-message').innerText = e
+    fifthContainer.style.transform = 'translateX(-600%)'
+}
+function handleContainerSucess(){
+    document.getElementById('f-product-created-main').style.background = 'var(--main-color)'
+    document.getElementById('f-statusimg').src = './check.png'
+    document.getElementById('f-title').innerText = 'Product Published'
+    document.getElementById('f-message').innerText = 'Congratulations! Your Product has been Sucessfully Published.'
+    fifthContainer.style.transform = 'translateX(-600%)'
+
+}
+    
+</script>

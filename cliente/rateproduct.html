@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./global.css">
+
+    <style>
+
+        textarea::placeholder{
+            color: #b0b0b0;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    
+    <div style=" overflow: hidden; width: 100vw; height: 100dvh;; background-color: #F5F5F5;">
+
+    <button id="go-back-button" class="f f-cntr" style="display: none; background-color: white;position: fixed; top: 15px; left: 15px; border-radius: 10px; padding: 10px 13px; position: fixed; z-index: 2;" >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#6A6A6A" class="bi bi-chevron-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+        </svg>
+    </button>
+
+    <img id="user-image" src="" style="position: fixed; top: 15px; right: 15px; width: 40px; height: 40px; z-index: 2;" class="rounded" alt="" >
+
+
+    <div style="padding: 15px; width: 100%; position: fixed; bottom: 0; z-index: 2;">
+
+    </div>
+
+<div style="height: 100dvh;; width: 100vw; overflow: scroll;  
+    position: relative;
+
+    transform: translateX(-100%); 
+    animation: slideToRight 0.25s ease-in-out forwards;
+    ">
+
+<div id="buttons-parent" style="gap: 10px; padding: 23px;" class="f f-col">
+
+    <h1 class="fsz-20 fw-6" style="color: #6a6a6a;">Rating</h1>
+    <h2 class="fsz-11 fw-5" style="color: #b0b0b0; margin-bottom: 15px;">Give the Owner a FeedBack of his Product!</h2>
+
+    <img src="" style="width: 80px; height: 80px;" id="product-image" alt="" onclick="gotoproduct()">
+
+    <div class="f" style="gap: 20px; align-items: center; width: fit-content; margin: auto; margin-bottom: 10px;">
+        <svg id="star-1" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="gray" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+        </svg>
+        <svg id="star-2" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="gray" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+        </svg>
+        <svg  id="star-3" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="gray" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+        <svg  id="star-4" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="gray" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+        </svg>
+        <svg  id="star-5"  xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="gray" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+        </svg>
+    </div>
+
+
+    <textarea id="comment-input" style="border: none; border-radius: 15px; padding: 15px; resize: none; margin-bottom: 10px;" name="" placeholder="Leave a message or suggestion if you like..." cols="30" rows="5" ></textarea>
+          
+
+    <button id="write-review-button" class="fsz-11 fw-7 clr-white" style="height: 65px; background-color: var(--main-color); padding: 20px; flex-grow: 1; border-radius: 15px;">
+
+         
+              Write Review
+    
+    </button>
+    <button class="fsz-11 fw-5" style="color: var(--main-color); height: 65px; background-color: white; padding: 20px; flex-grow: 1; border-radius: 15px;" onclick="gotoproduct()">
+
+         
+              Leave it For Later
+    
+    </button>
+            
+        </div>
+
+
+
+
+    <div id="ratings-container" class="f f-col" style="gap: 10px; padding: 0 15px 0 15px;  padding-top: 50px; ">
+    </div>
+</div>
+</div>
+
+
+
+</body>
+
+<script defer>
+
+let TOKEN = null;
+let STAR_STATE = 3;
+let P_ID = null;
+const main = async()=>{
+
+    const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+if (!productId)window.location.href = 'main.html';
+P_ID = productId
+const product  = await getProductById(productId)
+document.getElementById('product-image').src = product.url
+
+    document.getElementById('star-1').addEventListener('click', ()=>changeStar(1))
+    document.getElementById('star-2').addEventListener('click', ()=>changeStar(2))
+    document.getElementById('star-3').addEventListener('click', ()=>changeStar(3))
+    document.getElementById('star-4').addEventListener('click', ()=>changeStar(4))
+    document.getElementById('star-5').addEventListener('click', ()=>changeStar(5))
+
+
+
+    for (let i = 1; i<=STAR_STATE; i++){
+        document.getElementById(`star-${i}`).setAttribute('fill', 'var(--main-color)')
+    }
+
+
+const user = await getMyUserInfo()
+document.getElementById('user-image').src = `${user.url}`
+
+
+
+document.getElementById('write-review-button').addEventListener('click', sendreview)
+
+}
+
+async function sendreview(pid){
+    const comment = document.getElementById('comment-input').value
+    
+    console.log(comment)
+    console.log(STAR_STATE)
+    const res = await fetch(`https://ggsrc.tech/ir?pid=${P_ID}`, {
+        method: 'POST',
+        body: JSON.stringify({comment: comment, rating: STAR_STATE}),
+        headers: {
+            'Authorization': TOKEN,
+            'Content-Type': 'application/json'
+        },
+    })
+    if (res.status == 200){
+        console.log('inserted')
+    } else {
+        const {error} = await res.json()
+        console.log('err')
+        console.log(error)
+    }
+}
+
+main()
+
+function gotoproduct(){
+    console.log('going')
+    window.location.href=`product.html?id=${P_ID}`
+}
+function changeStar(n){
+    if (n < STAR_STATE){
+        for (let i = n+1; i<=STAR_STATE; i++){
+            document.getElementById(`star-${i}`).setAttribute('fill', 'gray')
+        }
+    } else if (n > STAR_STATE) {
+        for (let i = n; i>=1; i--){
+            document.getElementById(`star-${i}`).setAttribute('fill', 'var(--main-color)')
+        }
+    }
+
+    //2
+    // for (let i = n; i<6; i++){
+    //     document.getElementById(`star-${i}`).setAttribute('fill', 'gray')
+    // }
+}
+async function getMyUserInfo() {
+    const token = window.localStorage.getItem('token')
+    if (!token) {
+        window.location.href= '/signin.html'
+        return;
+    }
+    TOKEN = token;
+
+    const res = await fetch('https://ggsrc.tech/gui', {
+        method: 'GET',
+        headers: {
+            'Authorization': TOKEN
+        }
+    })
+    if (res.status == 200) {
+        const { name, url } = await res.json()
+            return { name, url }
+    } else if (res.status == 403) { 
+        window.location.href= '/a.html'
+    }
+
+
+        return null;
+}
+
+async function getProductById(id){
+        const res = await fetch(`https://ggsrc.tech/gsp?id=${id}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        },
+    })
+    if (res.status == 200){
+        const {product} = await res.json()
+        return product
+    } else {
+        const data = await res.json()
+        console.log('err')
+        console.log(data)
+        return null
+    }
+}
+</script>
+</html>
